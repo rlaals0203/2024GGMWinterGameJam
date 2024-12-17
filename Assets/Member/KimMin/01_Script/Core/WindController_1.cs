@@ -4,7 +4,7 @@ using UnityEngine;
 public class WindController : MonoSingleton<WindController>
 {
     public const float GRAVITY = 9.81f;
-    public event Action OnGravityChange;
+    public event Action OnWindChanged;
 
 	public float gravityScale = 1f;
 	public float changeTime = 0.1f;
@@ -38,7 +38,7 @@ public class WindController : MonoSingleton<WindController>
         Physics2D.gravity = direction * gravityScale;
         prevGravity = direction;
 
-        OnGravityChange?.Invoke();
+        OnWindChanged?.Invoke();
     }
 
     public void UpWind()

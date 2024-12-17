@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerVisual : MonoBehaviour
+public class PlayerVisual : MonoBehaviour, IPlayerComponent
 {
-    // Start is called before the first frame update
-    void Start()
+    private Player _player;
+
+    public void Initialize(Player player)
     {
-        
+        _player = player;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        RotatePlayer();
+    }
+
+    private void RotatePlayer()
+    {
+        float angle = Mathf.Atan2(_player.RigidCompo.velocity.y, 
+            _player.RigidCompo.velocity.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }

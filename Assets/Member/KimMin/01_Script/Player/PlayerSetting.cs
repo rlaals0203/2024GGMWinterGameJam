@@ -9,7 +9,7 @@ public class PlayerSetting : MonoBehaviour
 
     public ReleaseShot releaseShot;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         RigidCompo = GetComponent<Rigidbody2D>();
     }
