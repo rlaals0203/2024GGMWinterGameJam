@@ -30,13 +30,17 @@ public class Player : PlayerSetting
         WindController.Instance.SetVelocity(RigidCompo);
     }
 
-    private void HandleOnShot(Vector2 shotDir)
+    private void HandleOnShot(Vector2 shotDir, Transform gun)
     {
         WindController.Instance.UpWind();
 
         IsAwake = true;
+        transform.position = new Vector2(
+            gun.position.x + gun.transform.localScale.x / 2, 
+            gun.position.y);
+
         RigidCompo.simulated = true;
-        RigidCompo.AddForce(shotDir * 100);
+        RigidCompo.AddForce(shotDir * ShotPower);
     }
 
     public T GetCompo<T>() where T : class
