@@ -28,10 +28,16 @@ public class SettingButton : MonoBehaviour
 
             foreach (GameObject button in buttons)
             {
+                if (button == null) continue;
+
                 if (button == currentHoveredButton)
+                {
                     button.transform.DOScale(1.5f, 0.3f);
-                else if (button != currentHoveredButton)
+                }
+                else
+                {
                     button.transform.DOScale(0.8f, 0.3f);
+                }
             }
         }
 
@@ -39,6 +45,7 @@ public class SettingButton : MonoBehaviour
         {
             foreach (GameObject button in buttons)
             {
+                if (button == null) continue;
                 button.transform.DOScale(1f, 0.3f);
             }
         }
