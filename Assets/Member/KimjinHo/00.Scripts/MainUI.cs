@@ -84,16 +84,24 @@ public class MainUI : MonoBehaviour
         {
             currentHoveredButton = hoveredButton;
 
-            // 모든 버튼의 크기를 업데이트
             foreach (GameObject button in buttons)
             {
                 if (button == currentHoveredButton)
                     button.transform.DOScale(1.5f, 0.3f);
-                else
-                    button.transform.DOScale(1f, 0.3f);
+                else if (button != currentHoveredButton)
+                    button.transform.DOScale(0.5f, 0.3f);
+            }
+        }
+
+        if (currentHoveredButton == null)
+        {
+            foreach (GameObject button in buttons)
+            {
+                button.transform.DOScale(1f, 0.3f);
             }
         }
     }
+
 
     private GameObject GetHoveredButton()
     {
