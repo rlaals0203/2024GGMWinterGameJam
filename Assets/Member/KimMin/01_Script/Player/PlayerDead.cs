@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerDead : MonoBehaviour, IPlayerComponent
@@ -17,6 +16,7 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
         if (collision.transform.TryGetComponent(out ICollisionable collisionable) ||
             collision.transform.CompareTag("Wall"))
         {
+            _bullet.CameraPos.transform.DOShakePosition(0.5f, 4f);
             ExplosionPlayer();
         }
     }
