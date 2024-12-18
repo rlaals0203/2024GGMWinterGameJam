@@ -7,7 +7,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public bool IsAwake { get; protected set; } = false;
-    public bool IsHorizontal { get; protected set; } = true;
     public Transform CameraPos { get; protected set; }
 
     public float bulletSpeed = 10f;

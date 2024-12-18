@@ -14,6 +14,11 @@ public class WindController : MonoSingleton<WindController>
     public Vector2 currentGravity = Vector2.zero;
     private Vector2 prevGravity = Vector2.zero;
 
+    private void Awake()
+    {
+        Physics2D.gravity = new Vector2(0, 0);
+    }
+
     private void Update()
     {
         ChangeWind();
@@ -26,6 +31,8 @@ public class WindController : MonoSingleton<WindController>
 
     private void ChangeWind()
     {
+
+
         if (isHorizontal)
         {
             if (Input.GetKeyDown(KeyCode.W)) UpWind();

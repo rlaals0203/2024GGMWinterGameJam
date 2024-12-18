@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Bullet : Player, IBlowable
 {
@@ -25,6 +26,7 @@ public class Bullet : Player, IBlowable
     private void HandleOnShot(Vector2 shotDir, Transform gun)
     {
         WindController.Instance.UpWind();
+        CameraPos.transform.DOShakePosition(0.1f, 4f);
 
         IsAwake = true;
         transform.position = new Vector2(
@@ -56,10 +58,7 @@ public class Bullet : Player, IBlowable
 
     private void BulletMove()
     {
-        if (WindController.Instance.isHorizontal)
-        {
-            RigidCompo.AddForce(moveDir * bulletSpeed);
-        }
+        RigidCompo.AddForce(moveDir * bulletSpeed);
     }
 
     public Rigidbody2D AssignRigidbody()

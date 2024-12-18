@@ -15,7 +15,7 @@ public class BreakWall : MonoBehaviour
             moveDir = (_directionTrm.position - bullet.transform.position).normalized;*/
             PlayEffect(bullet.transform);
             StartCoroutine(SlowMotionRoutine());
-            bullet.CameraPos.transform.DOShakePosition(0.2f, 6f);
+            bullet.CameraPos.transform.DOShakePosition(0.25f, 25, 50, 5f);
         }
     }
 
@@ -28,7 +28,7 @@ public class BreakWall : MonoBehaviour
     private IEnumerator SlowMotionRoutine()
     {
         Time.timeScale = 0.8f;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         Time.timeScale = 1f;
     }
 }
