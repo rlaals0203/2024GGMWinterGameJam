@@ -38,8 +38,12 @@ public class MainUI : MonoBehaviour
     public GraphicRaycaster graphicRaycaster;
     public EventSystem eventSystem;
 
-    [SerializeField] private List<GameObject> buttons; // 여러 버튼들을 담을 리스트
-    private GameObject currentHoveredButton = null;   // 현재 마우스가 오버된 버튼
+    [SerializeField] private List<GameObject> buttons;
+    private GameObject currentHoveredButton = null;
+    private void Awake()
+    {
+        DOTween.SetTweensCapacity(500, 50);
+    }
 
     private void OnEnable()
     {
@@ -63,10 +67,12 @@ public class MainUI : MonoBehaviour
             .Insert(1.4f, _startButton.transform.DOMove(StartButtonPos3.position, 0.5f))
             .Append(_startButton.transform.DOMove(StartButtonPos2.position, 0.5f))
             .Append(_startButton.transform.DOMove(StartButtonPos1.position, 0.4f));
+
         seqbtn2
             .Insert(2.4f, _settingButton.transform.DOMove(SettingButtonPos3.position, 0.5f))
             .Append(_settingButton.transform.DOMove(SettingButtonPos2.position, 0.5f))
             .Append(_settingButton.transform.DOMove(SettingButtonPos1.position, 0.4f));
+
         seqbtn3
             .Insert(3.4f, _exitButton.transform.DOMove(_exitButtonPos3.position, 0.5f))
             .Append(_exitButton.transform.DOMove(_exitButtonPos2.position, 0.5f))
@@ -88,10 +94,16 @@ public class MainUI : MonoBehaviour
 
             foreach (GameObject button in buttons)
             {
+                if (button == null) continue; 
+
                 if (button == currentHoveredButton)
-                    button.transform.DOScale(1.5f, 0.3f);
-                else if (button != currentHoveredButton)
-                    button.transform.DOScale(0.8f, 0.3f);
+                {
+                    button.transform.DOScale(1.5f, 0.3f); 
+                }
+                else
+                {
+                    button.transform.DOScale(0.8f, 0.3f); 
+                }
             }
         }
 
@@ -99,10 +111,12 @@ public class MainUI : MonoBehaviour
         {
             foreach (GameObject button in buttons)
             {
+                if (button == null) continue; 
                 button.transform.DOScale(1f, 0.3f);
             }
         }
     }
+
 
 
     private GameObject GetHoveredButton()
@@ -125,5 +139,4 @@ public class MainUI : MonoBehaviour
         }
         return null;
     }
-
 }
