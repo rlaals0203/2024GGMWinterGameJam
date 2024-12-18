@@ -6,8 +6,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public bool IsAwake { get; protected set; } = false;
+    public bool IsHorizontal { get; protected set; } = true;
 
-    public float ShotPower = 100f;
+    public float bulletSpeed = 10f;
+    public float shotPower = 100f;
+
+    public Vector3 moveDir;
+
     public ReleaseShot releaseShot;
 
     private Dictionary<Type, IPlayerComponent> _components;

@@ -12,6 +12,11 @@ public class Bullet : Player, IBlowable
         WindController.Instance.OnWindChanged += HandleGravityChanged;
     }
 
+    private void FixedUpdate()
+    {
+        BulletMove();
+    }
+
     private void HandleGravityChanged()
     {
         WindController.Instance.SetVelocity(RigidCompo);
@@ -27,7 +32,34 @@ public class Bullet : Player, IBlowable
             gun.position.y);
 
         RigidCompo.simulated = true;
-        RigidCompo.AddForce(shotDir * ShotPower);
+        RigidCompo.AddForce(shotDir * shotPower);
+
+        float diffrence = Quaternion.Angle(gun.rotation, Quaternion.Euler(0, 0, 0));
+
+        if (diffrence < 45)
+        {
+            moveDir = Vector2.right;
+        }
+        else if (diffrence > 45 && diffrence < 90)
+        {
+            moveDir = Vector2.right;
+        }
+        else if (diffrence > 90 && diffrence < 135)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    private void BulletMove()
+    {
+        if (WindController.Instance.isHorizontal)
+        {
+            RigidCompo.AddForce(moveDir * bulletSpeed);
+        }
     }
 
     public Rigidbody2D AssignRigidbody()

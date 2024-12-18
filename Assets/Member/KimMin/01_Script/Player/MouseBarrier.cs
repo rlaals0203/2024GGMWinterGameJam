@@ -32,8 +32,6 @@ public class MouseBarrier : MonoBehaviour
         {
             blowable.RigidCompo.AddForce((collision.transform.position - 
                 transform.position).normalized * _hitPower);
-
-            Debug.Log(blowable.RigidCompo.transform.name);
         }
     }
 }

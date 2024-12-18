@@ -27,7 +27,6 @@ public class ReleaseShot : MonoBehaviour
     {
         WindController.Instance.UpWind();
         OnShotEvent?.Invoke(_shotDir, transform);
-        Debug.Log(_shotDir);
     }
 
     private void Release()
