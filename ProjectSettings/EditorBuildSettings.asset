@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/JH_test.unity
     guid: 87cbcf411d84d304f831c6fb5099c05c
+  - enabled: 1
+    path: Assets/00_Scenes/KImJinHo.unity
+    guid: c8d35c7fbe2703c4b8064603bdecbe50
   m_configObjects: {}

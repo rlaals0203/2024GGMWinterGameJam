@@ -40,7 +40,7 @@ public class MainUI : MonoBehaviour
     [SerializeField] private List<GameObject> buttons; // 여러 버튼들을 담을 리스트
     private GameObject currentHoveredButton = null;   // 현재 마우스가 오버된 버튼
 
-    private void Start()
+    private void OnEnable()
     {
         StartMove();
     }
