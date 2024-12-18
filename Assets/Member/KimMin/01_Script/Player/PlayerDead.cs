@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerDead : MonoBehaviour, IPlayerComponent
@@ -16,17 +17,32 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
         if (collision.transform.TryGetComponent(out ICollisionable collisionable) ||
             collision.transform.CompareTag("Wall"))
         {
-            _bullet.CameraPos.transform.DOShakePosition(0.5f, 4f);
-            Time.timeScale = 0.25f;
+            _bullet.CameraPos.transform.DOShakePosition(1f, 4f);
+
+            _bullet.cutScene.gameObject.SetActive(true);
+            _bullet.cutScene.DOFade(1f, 0f);
+
             ExplosionPlayer();
+            StartCoroutine(CutSceneRoutine());
+
+            Time.timeScale = 0.5f;
         }
     }
 
     private void ExplosionPlayer()
     {
-        _bullet.gameObject.SetActive(false);
-        _effectPlayer = PoolManager.Instance.Pop("ExplosionParticle") as EffectPlayer;
+        _bullet.PlayerVisualCompo.renderer.enabled = false;
+        _bullet.RigidCompo.velocity = Vector2.zero;
+        _bullet.RigidCompo.simulated = false;
 
+        _effectPlayer = PoolManager.Instance.Pop("ExplosionParticle") as EffectPlayer;
         _effectPlayer.SetPositionAndPlay(transform.position);
+    }
+
+    private IEnumerator CutSceneRoutine()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        _bullet.cutScene.DOFade(0f, 0.5f);
     }
 }

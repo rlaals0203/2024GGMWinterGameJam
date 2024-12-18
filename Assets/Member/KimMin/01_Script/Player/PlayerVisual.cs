@@ -1,19 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerVisual : MonoBehaviour, IPlayerComponent
 {
     private Bullet _bullet;
-    private SpriteRenderer _renderer;
+    public SpriteRenderer renderer;
 
     public void Initialize(Player player)
     {
         _bullet = player as Bullet;
-        _renderer = GetComponent<SpriteRenderer>();
+        renderer = GetComponent<SpriteRenderer>();
 
-        _renderer.enabled = false;
+        renderer.enabled = false;
     }
 
     private void Start()
@@ -28,7 +25,7 @@ public class PlayerVisual : MonoBehaviour, IPlayerComponent
 
     private void HandleOnShot(Vector2 vector, Transform gun)
     {
-        _renderer.enabled = true;
+        renderer.enabled = true;
     }
 
     private void RotatePlayer()

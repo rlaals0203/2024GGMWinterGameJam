@@ -8,13 +8,14 @@ public class Player : MonoBehaviour
 {
     public bool IsAwake { get; protected set; } = false;
     public Transform CameraPos { get; protected set; }
+    public PlayerVisual PlayerVisualCompo { get; protected set; }
 
     public float bulletSpeed = 10f;
     public float shotPower = 100f;
 
     public Vector3 moveDir;
-
     public ReleaseShot releaseShot;
+    public SpriteRenderer cutScene;
 
     private Dictionary<Type, IPlayerComponent> _components;
 
@@ -28,6 +29,8 @@ public class Player : MonoBehaviour
         _components.Values.ToList().ForEach(compo => compo.Initialize(this));
 
         CameraPos = transform.Find("CameraPos");
+        cutScene = transform.Find("CutScene").GetComponent<SpriteRenderer>();
+        PlayerVisualCompo = GetCompo<PlayerVisual>();
     }
 
     public T GetCompo<T>() where T : class
