@@ -20,7 +20,7 @@ public class Bullet : Player, IBlowable
     {
         releaseShot.OnShotEvent -= HandleOnShot;
         OnSceneLoadComplete -= HandleSceneLoaded;
-        WindController.Instance.OnWindChanged -= HandleGravityChanged;
+        //WindController.Instance.OnWindChanged -= HandleGravityChanged;
     }
 
     private void Start()

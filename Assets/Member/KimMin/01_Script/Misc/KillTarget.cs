@@ -8,7 +8,14 @@ public class KillTarget : MonoBehaviour
     public event Action OnKillEvent;
     public event Action OnKillCutSceneEnd;
 
+    [SerializeField] private Sprite _aftermath;
+    private SpriteRenderer _renderer;
     private Bullet _bullet;
+
+    private void Awake()
+    {
+        _renderer = GetComponent<SpriteRenderer>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,6 +29,8 @@ public class KillTarget : MonoBehaviour
             _bullet.cutScene.DOFade(1f, 0f);
             _bullet.cutScene.color = Color.red;
             _bullet.cutScene.DOColor(Color.black, 0.5f);
+
+            _renderer.sprite = _aftermath;
 
             ExplosionPlayer();
             StartCoroutine(CutSceneRoutine());
@@ -46,7 +55,7 @@ public class KillTarget : MonoBehaviour
 
     private IEnumerator CutSceneRoutine()
     {
-        yield return new WaitForSeconds(1.65f);
+        yield return new WaitForSeconds(1.5f);
 
         _bullet.cutScene.DOFade(0f, 0.5f)
             .OnComplete(() =>
