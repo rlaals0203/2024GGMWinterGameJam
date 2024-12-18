@@ -18,6 +18,11 @@ public class PlayerVisual : MonoBehaviour, IPlayerComponent
         _bullet.releaseShot.OnShotEvent += HandleOnShot;
     }
 
+    private void OnDisable()
+    {
+        _bullet.releaseShot.OnShotEvent -= HandleOnShot;
+    }
+
     private void Update()
     {
         RotatePlayer();

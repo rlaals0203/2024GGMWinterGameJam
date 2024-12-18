@@ -28,7 +28,6 @@ public class Bullet : Player, IBlowable
         WindController.Instance.UpWind();
         CameraPos.transform.DOShakePosition(0.1f, 4f);
 
-        IsAwake = true;
         transform.position = new Vector2(
             gun.position.x + gun.transform.localScale.x / 2,
             gun.position.y);
@@ -46,19 +45,17 @@ public class Bullet : Player, IBlowable
         {
             moveDir = Vector2.right;
         }
-        else if (diffrence > 90 && diffrence < 135)
-        {
 
-        }
-        else
-        {
-
-        }
     }
 
     private void BulletMove()
     {
         RigidCompo.AddForce(moveDir * bulletSpeed);
+    }
+
+    public void HandleKillTarget()
+    {
+
     }
 
     public Rigidbody2D AssignRigidbody()

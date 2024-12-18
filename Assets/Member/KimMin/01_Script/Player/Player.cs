@@ -1,12 +1,11 @@
-using Cinemachine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public bool IsAwake { get; protected set; } = false;
     public Transform CameraPos { get; protected set; }
     public PlayerVisual PlayerVisualCompo { get; protected set; }
 
@@ -16,6 +15,8 @@ public class Player : MonoBehaviour
     public Vector3 moveDir;
     public ReleaseShot releaseShot;
     public SpriteRenderer cutScene;
+
+    public Transform startPos;
 
     private Dictionary<Type, IPlayerComponent> _components;
 
@@ -28,10 +29,24 @@ public class Player : MonoBehaviour
 
         _components.Values.ToList().ForEach(compo => compo.Initialize(this));
 
+        StageManager.Instance.OnStageLoaded += HandleStageLoad;
+
         CameraPos = transform.Find("CameraPos");
         cutScene = transform.Find("CutScene").GetComponent<SpriteRenderer>();
         PlayerVisualCompo = GetCompo<PlayerVisual>();
     }
+
+    private void HandleStageLoad()
+    {
+        while (GetSceneName() == $"Stage{StageManager.Instance.currentStage}")
+        {
+            break;
+        }
+
+        startPos = GameObject.Find("StartPos").transform;
+    }
+
+    private string GetSceneName() => SceneManager.GetActiveScene().name;
 
     public T GetCompo<T>() where T : class
     {
