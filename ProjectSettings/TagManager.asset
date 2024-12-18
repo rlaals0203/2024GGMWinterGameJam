@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Barrier
+  - Blinder
   layers:
   - Default
   - TransparentFX
