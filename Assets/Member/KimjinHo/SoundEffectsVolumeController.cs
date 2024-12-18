@@ -11,6 +11,7 @@ public class SoundEffectsVolumeController : MonoBehaviour
     {
         SetSound(soundManager._sfx);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+        SoundPlay(sfxSound.sounds[0].clip);
     }
     public void SetSound(AudioSource audioSource)
     {
@@ -23,12 +24,15 @@ public class SoundEffectsVolumeController : MonoBehaviour
     {
         foreach (var sfxSource in sfxSound.sounds)
         {
-            sfxSource.volume = volume; // 모든 효과음 소스의 음량 조절
+            sfxSource.volume = volume; // Sound 객체의 볼륨 설정
+            if (sfxSource.audioSource != null)
+                sfxSource.audioSource.volume = volume; // AudioSource 볼륨 설정
         }
     }
 
     public void SoundPlay(AudioClip clip)
     {
         soundManager._sfx.clip = clip;
+        soundManager._sfx.Play();
     }
 }
