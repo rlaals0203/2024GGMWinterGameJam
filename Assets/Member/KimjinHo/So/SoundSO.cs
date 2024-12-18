@@ -14,8 +14,6 @@ public class SoundSO : ScriptableObject
 
     public void SoundPlay()
     {
-        Debug.Log(1);
-        Debug.Log(audioSource);
         audioSource.Play();
     }
 }
