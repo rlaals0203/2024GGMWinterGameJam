@@ -3,40 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Player : PlayerSetting
+public class Player : MonoBehaviour
 {
+    public bool IsAwake { get; protected set; } = false;
+
+    public float ShotPower = 100f;
+    public ReleaseShot releaseShot;
+
     private Dictionary<Type, IPlayerComponent> _components;
 
-    private void OnEnable()
+    protected virtual void Awake()
     {
-        releaseShot.OnShotEvent += HandleOnShot;
-        WindController.Instance.OnWindChanged += HandleGravityChanged;
-    }
-
-    protected override void Awake()
-    {
-        base.Awake();
-
         _components = new Dictionary<Type, IPlayerComponent>();
 
         GetComponentsInChildren<IPlayerComponent>().ToList()
             .ForEach(x => _components.Add(x.GetType(), x));
 
         _components.Values.ToList().ForEach(compo => compo.Initialize(this));
-    }
-
-    private void HandleGravityChanged()
-    {
-        WindController.Instance.SetVelocity(RigidCompo);
-    }
-
-    private void HandleOnShot(Vector2 shotDir)
-    {
-        WindController.Instance.UpWind();
-
-        IsAwake = true;
-        RigidCompo.simulated = true;
-        RigidCompo.AddForce(shotDir * 100);
     }
 
     public T GetCompo<T>() where T : class
