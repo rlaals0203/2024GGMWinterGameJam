@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MouseBarrier : MonoBehaviour
 {
+    [SerializeField] private float _hitPower;
     private Vector2 _mosuePos;
 
     private void Awake()
@@ -29,7 +30,8 @@ public class MouseBarrier : MonoBehaviour
     {
         if (collision.transform.TryGetComponent(out IBlowable blowable))
         {
-
+            blowable.RigidCompo.AddForce((collision.transform.position - 
+                transform.position).normalized * _hitPower);
         }
     }
 }

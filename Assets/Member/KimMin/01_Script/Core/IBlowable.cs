@@ -6,5 +6,5 @@ public interface IBlowable
 {
     public Rigidbody2D RigidCompo { get; }
 
-    public void AssignRigidbody();
+    public Rigidbody2D AssignRigidbody();
 }
