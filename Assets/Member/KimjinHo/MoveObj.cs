@@ -1,6 +1,5 @@
 using DG.Tweening;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class MoveObj : MonoBehaviour
 {
@@ -8,6 +7,7 @@ public class MoveObj : MonoBehaviour
     [SerializeField] private Transform _movePos;
     [SerializeField] private Transform _backPos;
     [SerializeField] private float duration = 1f;
+
     private void Awake()
     {
         Move();

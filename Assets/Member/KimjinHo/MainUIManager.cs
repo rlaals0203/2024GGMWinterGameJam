@@ -1,10 +1,6 @@
 using DG.Tweening;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class MainUIManager : MonoBehaviour
 {
@@ -12,17 +8,12 @@ public class MainUIManager : MonoBehaviour
 
     [SerializeField] private string _gmaeScnenName;
 
-    [SerializeField] private TMP_Dropdown _dropdown;
-
-    [SerializeField] private AudioSource _aa;
-
     private bool _setting = true;
 
     private void Awake()
     {
         _settingPanel.SetActive(false);
     }
-
 
     public void ChangeScene()
     {
@@ -32,13 +23,9 @@ public class MainUIManager : MonoBehaviour
     public void OnSetting()
     {
         if (_setting)
-        {
             Show();
-        }
         else
-        {
             Hide();
-        }
         _setting = !_setting;
     }
     public void Show()
@@ -76,14 +63,12 @@ public class MainUIManager : MonoBehaviour
     {
         switch (index)
         {
-            case 0: // 전체 화면
+            case 0:
                 Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
-                Debug.Log("전체 화면");
                 break;
 
-            case 1: // 창 모드
+            case 1:
                 Screen.fullScreenMode = FullScreenMode.Windowed;
-                Debug.Log("창 모드");
                 break;
         }
     }
