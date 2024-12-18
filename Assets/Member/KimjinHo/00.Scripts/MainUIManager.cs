@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainUIManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class MainUIManager : MonoBehaviour
 
     [SerializeField] private string _gmaeScnenName2;
 
+    [SerializeField] private Image _panel;
+
     private bool _setting = true;
 
     private void Awake()
@@ -17,8 +20,29 @@ public class MainUIManager : MonoBehaviour
         _settingPanel.SetActive(false);
     }
 
+    private void OnEnable()
+    {
+        FadeIn();
+    }
+    private void FadeIn()
+    {
+        _panel.DOFade(0, 1f).OnComplete(() => _panel.gameObject.SetActive(false)); 
+    }
+
+    public void FadeOut()
+    {
+        _panel.gameObject.SetActive(true); // 패널 활성화
+        _panel.DOFade(1, 1f).OnComplete(() => ChangeStartScene()); 
+    }
+    public void FadeOut2()
+    {
+        _panel.gameObject.SetActive(true); // 패널 활성화
+        _panel.DOFade(1, 1f).OnComplete(() => ChangeGameScene());
+    }
+
     public void ChangeGameScene()
     {
+        _panel.DOFade(1, 1f);
         DOTween.KillAll(); // 모든 DOTween 작업 취소
         SceneManager.LoadScene(_gmaeScnenName1);
     }
