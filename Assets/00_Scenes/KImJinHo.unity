@@ -2150,7 +2150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settingPanel: {fileID: 1378608168769789649}
-  _gmaeScnenName1: JH_test
+  _gmaeScnenName1: Chose
   _gmaeScnenName2: KImJinHo
   _panel: {fileID: 511775963}
 --- !u!114 &1735710907
