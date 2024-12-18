@@ -5,16 +5,34 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/00_Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/00_Scenes/Chose.unity
+    path: Assets/00_Scenes/MainScene/Title.unity
+    guid: c3dc7bad483b24944b05d3bfd6cc78aa
+  - enabled: 1
+    path: Assets/00_Scenes/MainScene/Chose.unity
     guid: 87cbcf411d84d304f831c6fb5099c05c
   - enabled: 1
-    path: Assets/00_Scenes/KImJinHo.unity
-    guid: c8d35c7fbe2703c4b8064603bdecbe50
+    path: Assets/00_Scenes/MainScene/Stages/Stage1.unity
+    guid: 98a33492abef6a749b171f27dcf46205
   - enabled: 1
-    path: Assets/00_Scenes/KimMin.unity
-    guid: 2ba6346851f4f10438b985adaa183c2c
+    path: Assets/00_Scenes/MainScene/Stages/Stage2.unity
+    guid: 3cc2bec99c28d394a812647fba6f9f63
+  - enabled: 1
+    path: Assets/00_Scenes/MainScene/Stages/Stage3.unity
+    guid: 89830ced4438d3c4d8f754640ec4e5aa
+  - enabled: 1
+    path: Assets/00_Scenes/MainScene/Stages/Stage4.unity
+    guid: e5927c68f150b4b42bae496fa476dc97
+  - enabled: 1
+    path: Assets/00_Scenes/MainScene/Stages/Stage5.unity
+    guid: 2ccf387d7a834954c8b54f2b823ccc31
+  - enabled: 1
+    path: Assets/00_Scenes/MainScene/Stages/Stage6.unity
+    guid: 0ba18da79fbd2e84d869a02653035f0f
+  - enabled: 1
+    path: Assets/00_Scenes/MainScene/Stages/Stage7.unity
+    guid: 113075ac15e6b1b42b87221d81f97e0b
+  - enabled: 1
+    path: Assets/00_Scenes/MainScene/Stages/Stage8.unity
+    guid: eda42ac883b545b4f9ac0379af446ed5
   m_configObjects: {}
