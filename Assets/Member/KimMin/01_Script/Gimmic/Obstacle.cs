@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block : MonoBehaviour, IBlowable
+public class Obstacle : MonoBehaviour, IBlowable
 {
     public Rigidbody2D RigidCompo => AssignRigidbody();
 
