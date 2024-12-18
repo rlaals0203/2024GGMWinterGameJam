@@ -11,6 +11,7 @@ public class MainUI : MonoBehaviour
     [SerializeField] private GameObject _startButton;
     [SerializeField] private GameObject _settingButton;
     [SerializeField] private GameObject _exitButton;
+    [SerializeField] private Image _panel;
 
 
     [Header("TitleMovePos")]
@@ -42,6 +43,7 @@ public class MainUI : MonoBehaviour
 
     private void OnEnable()
     {
+        _panel.DOFade(0, 0.5f);
         StartMove();
     }
 
@@ -89,7 +91,7 @@ public class MainUI : MonoBehaviour
                 if (button == currentHoveredButton)
                     button.transform.DOScale(1.5f, 0.3f);
                 else if (button != currentHoveredButton)
-                    button.transform.DOScale(0.5f, 0.3f);
+                    button.transform.DOScale(0.8f, 0.3f);
             }
         }
 
