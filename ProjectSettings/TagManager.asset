@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Barrier
+  - Blinder
   layers:
   - Default
   - TransparentFX
@@ -46,8 +47,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Wall
+    uniqueID: 614906251
+    locked: 0
   - name: Item
     uniqueID: 2282137309
+    locked: 0
+  - name: CutScene
+    uniqueID: 2813755349
     locked: 0
   - name: Player
     uniqueID: 73087277
