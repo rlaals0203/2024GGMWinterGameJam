@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class SoundEffectsVolumeController : MonoBehaviour
@@ -13,7 +12,7 @@ public class SoundEffectsVolumeController : MonoBehaviour
     private void Start()
     {
 
-        float volume =  PlayerPrefs.GetFloat(sfxName);
+        float volume = PlayerPrefs.GetFloat(sfxName);
         sfxSlider.value = volume;
         foreach (var sfxSource in sfxSound.sounds)
         {

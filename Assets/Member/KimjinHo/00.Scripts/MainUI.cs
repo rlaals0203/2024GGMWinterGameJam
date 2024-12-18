@@ -47,7 +47,7 @@ public class MainUI : MonoBehaviour
 
     private void OnEnable()
     {
-        _panel.DOFade(0, 0.5f);
+        _panel.DOFade(0, 1f);
         StartMove();
     }
 
@@ -59,22 +59,22 @@ public class MainUI : MonoBehaviour
         var seqbtn3 = DOTween.Sequence();
 
         seq
-            .Prepend(_title.transform.DOMove(_titlePos2.position, 0.5f))
+            .Prepend(_title.transform.DOMove(_titlePos2.position, 0.6f)).SetEase(Ease.InQuad)
             .Append(_title.transform.DOMove(_titlePos3.position, 0.5f))
             .Append(_title.transform.DOMove(_titlePos.position, 0.4f));
 
         seqbtn1
-            .Insert(1.4f, _startButton.transform.DOMove(StartButtonPos3.position, 0.5f))
+            .Insert(1.4f, _startButton.transform.DOMove(StartButtonPos3.position, 0.5f)).SetEase(Ease.InQuad)
             .Append(_startButton.transform.DOMove(StartButtonPos2.position, 0.5f))
             .Append(_startButton.transform.DOMove(StartButtonPos1.position, 0.4f));
 
         seqbtn2
-            .Insert(2.4f, _settingButton.transform.DOMove(SettingButtonPos3.position, 0.5f))
+            .Insert(2f, _settingButton.transform.DOMove(SettingButtonPos3.position, 0.5f)).SetEase(Ease.InQuad)
             .Append(_settingButton.transform.DOMove(SettingButtonPos2.position, 0.5f))
             .Append(_settingButton.transform.DOMove(SettingButtonPos1.position, 0.4f));
 
         seqbtn3
-            .Insert(3.4f, _exitButton.transform.DOMove(_exitButtonPos3.position, 0.5f))
+            .Insert(2.6f, _exitButton.transform.DOMove(_exitButtonPos3.position, 0.5f)).SetEase(Ease.InQuad)
             .Append(_exitButton.transform.DOMove(_exitButtonPos2.position, 0.5f))
             .Append(_exitButton.transform.DOMove(_exitButtonPos1.position, 0.4f));
     }

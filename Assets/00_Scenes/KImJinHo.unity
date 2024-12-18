@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 511775964}
   - component: {fileID: 511775963}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Fade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2797,6 +2797,7 @@ GameObject:
   - component: {fileID: 6105811360102946203}
   - component: {fileID: 1037133209905108794}
   - component: {fileID: 8607390075606253322}
+  - component: {fileID: 8607390075606253323}
   m_Layer: 5
   m_Name: SettingPanel
   m_TagString: Untagged
@@ -5189,6 +5190,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8607390075606253323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378608168769789649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14b12c20e46a6194cb70a5697184a905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graphicRaycaster: {fileID: 1735710900}
+  eventSystem: {fileID: 277305334}
+  buttons: []
+  _exitButton:
+  - {fileID: 4839271239373317772}
+  - {fileID: 251532756980954488}
 --- !u!114 &8621294408402167932
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,25 +31,25 @@ public class MainUIManager : MonoBehaviour
 
     public void FadeOut()
     {
-        _panel.gameObject.SetActive(true); // 패널 활성화
+        _panel.gameObject.SetActive(true);
         _panel.DOFade(1, 1f).OnComplete(() => ChangeStartScene()); 
     }
     public void FadeOut2()
     {
-        _panel.gameObject.SetActive(true); // 패널 활성화
+        _panel.gameObject.SetActive(true);
         _panel.DOFade(1, 1f).OnComplete(() => ChangeGameScene());
     }
 
     public void ChangeGameScene()
     {
         _panel.DOFade(1, 1f);
-        DOTween.KillAll(); // 모든 DOTween 작업 취소
+        DOTween.KillAll();
         SceneManager.LoadScene(_gmaeScnenName1);
     }
 
     public void ChangeStartScene()
     {
-        DOTween.KillAll(); // 모든 DOTween 작업 취소
+        DOTween.KillAll();
         if (_gmaeScnenName1 != null)
             SceneManager.LoadScene(_gmaeScnenName2);
     }
@@ -70,7 +70,7 @@ public class MainUIManager : MonoBehaviour
         _settingPanel.SetActive(true);
 
         var seq = DOTween.Sequence();
-        seq.Append(_settingPanel.transform.DOScale(1.1f, 0.2f));
+        seq.Append(_settingPanel.transform.DOScale(1.1f, 0.5f));
         seq.Append(_settingPanel.transform.DOScale(1f, 0.1f));
         seq.Play();
     }
@@ -84,7 +84,7 @@ public class MainUIManager : MonoBehaviour
 
         _settingPanel.transform.localScale = Vector3.one * 0.2f;
         seq.Append(_settingPanel.transform.DOScale(1.1f, 0.1f));
-        seq.Append(_settingPanel.transform.DOScale(0.2f, 0.2f));
+        seq.Append(_settingPanel.transform.DOScale(0f, 0.5f));
         seq.Play().OnComplete(() =>
         {
             _settingPanel?.SetActive(false);
