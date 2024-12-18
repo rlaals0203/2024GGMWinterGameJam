@@ -17,6 +17,7 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
             collision.transform.CompareTag("Wall"))
         {
             _bullet.CameraPos.transform.DOShakePosition(0.5f, 4f);
+            Time.timeScale = 0.25f;
             ExplosionPlayer();
         }
     }
