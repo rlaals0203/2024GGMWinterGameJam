@@ -9,7 +9,7 @@ public class ReflectBlock : MonoBehaviour
         if (collision.transform.CompareTag("Player") &&
             collision.transform.TryGetComponent(out IBlowable blowable))
         {
-            blowable.RigidCompo.velocity *= 2;
+
         }
     }
 }
