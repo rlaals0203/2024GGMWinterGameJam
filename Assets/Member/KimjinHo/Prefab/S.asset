@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b947ac6d815ca842a512e26bfd1ee2b, type: 3}
-  m_Name: SFX
+  m_Script: {fileID: 11500000, guid: 25412021e9e57e149b772e429b8193dc, type: 3}
+  m_Name: S
   m_EditorClassIdentifier: 
-  sounds:
-  - {fileID: 11400000, guid: d2aae04c3361ab049ac2b54c35ed07e8, type: 2}
+  audioSource: {fileID: 8358562277137554705, guid: 7e913e3a96e4c54468d4d856d485c0d5, type: 3}
+  clip: {fileID: 8300000, guid: edafd350a777b254d988cafeaf8220e7, type: 3}
+  volume: 0.74451816

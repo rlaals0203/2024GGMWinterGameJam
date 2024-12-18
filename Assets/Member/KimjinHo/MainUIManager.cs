@@ -2,6 +2,7 @@ using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -15,20 +16,13 @@ public class MainUIManager : MonoBehaviour
 
     [SerializeField] private AudioSource _aa;
 
-    [Header("Sound")]
-    [SerializeField] private SoundChannelSO _musicSound;
-    [SerializeField] private SoundChannelSO _effectSound;
-
-    [SerializeField] private SoundManager _soundManager;
-
     private bool _setting = true;
 
     private void Awake()
     {
         _settingPanel.SetActive(false);
-        _musicSound.players[0] = _aa;
-        _musicSound.players[0].Play();
     }
+
 
     public void ChangeScene()
     {
@@ -92,29 +86,5 @@ public class MainUIManager : MonoBehaviour
                 Debug.Log("창 모드");
                 break;
         }
-    }
-
-    private void MasterSlider(float changeEvent)
-    {
-        float newVolume = changeEvent / 100f; // 0~100 범위 -> 0~1로 변환
-        _musicSound.UpdateVolume(newVolume);
-        _effectSound.UpdateVolume(newVolume);
-        PlayerPrefs.SetFloat("MasterVolume", newVolume);
-    }
-
-    private void MusicSlider(float changeEvent)
-    {
-        // 사운드 세팅
-        float newVolume = changeEvent / 100f;
-        _musicSound.UpdateVolume(newVolume);
-        PlayerPrefs.SetFloat("MusicVolume", newVolume);
-    }
-
-    private void EffectSlider(float changeEvent)
-    {
-        // 사운드 세팅
-        float newVolume = changeEvent / 100f;
-        _effectSound.UpdateVolume(newVolume); ;
-        PlayerPrefs.SetFloat("EffectVolume", newVolume);
     }
 }
