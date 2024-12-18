@@ -2290,12 +2290,9 @@ MonoBehaviour:
   buttons:
   - {fileID: 2521490341935453415}
   - {fileID: 3483714523759380821}
-  _exitButton:
+  _settingButton:
   - {fileID: 1404582951916019199}
   - {fileID: 3442907363908033157}
-  - {fileID: 3597285064668358606}
-  - {fileID: 1056819352665015126}
-  - {fileID: 8035078686134731703}
 --- !u!1 &4996778132509215020
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,7 +2941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4328728275166888798
 RectTransform:
   m_ObjectHideFlags: 0

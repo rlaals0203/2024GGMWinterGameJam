@@ -12,8 +12,8 @@ public class SettingButton : MonoBehaviour
     [SerializeField] private List<GameObject> buttons;
     private GameObject currentHoveredButton = null;
 
-    [SerializeField] private List<GameObject> _exitButton;
-    private GameObject currentHoveredExitButton = null;
+    [SerializeField] private List<GameObject> _settingButton;
+    private GameObject currentHoveredSettingButton = null;
 
     private void Update()
     {
@@ -34,13 +34,9 @@ public class SettingButton : MonoBehaviour
                 if (button == null) continue;
 
                 if (button == currentHoveredButton)
-                {
                     button.transform.DOScale(1.5f, 0.3f);
-                }
                 else
-                {
                     button.transform.DOScale(0.8f, 0.3f);
-                }
             }
         }
 
@@ -58,24 +54,22 @@ public class SettingButton : MonoBehaviour
     {
         GameObject hoveredButton = GetHoveredExitButton();
 
-        if (hoveredButton != currentHoveredExitButton)
+        if (hoveredButton != currentHoveredSettingButton)
         {
-            currentHoveredExitButton = hoveredButton;
+            currentHoveredSettingButton = hoveredButton;
 
-            foreach (GameObject button in _exitButton)
+            foreach (GameObject button in _settingButton)
             {
                 if (button == null) continue;
 
-                if (button == currentHoveredExitButton)
-                {
+                if (button == currentHoveredSettingButton)
                     button.transform.DOScale(1.5f, 0.3f);
-                }
             }
         }
 
-        if (currentHoveredExitButton == null)
+        if (currentHoveredSettingButton == null)
         {
-            foreach (GameObject button in _exitButton)
+            foreach (GameObject button in _settingButton)
             {
                 if (button == null) continue;
                 button.transform.DOScale(1f, 0.3f);
@@ -94,13 +88,9 @@ public class SettingButton : MonoBehaviour
         graphicRaycaster.Raycast(pointerData, results);
 
         foreach (RaycastResult result in results)
-        {
-            foreach (GameObject button in _exitButton)
-            {
+            foreach (GameObject button in _settingButton)
                 if (result.gameObject == button)
                     return button;
-            } 
-        }
         return null;
     }
 
@@ -116,13 +106,9 @@ public class SettingButton : MonoBehaviour
         graphicRaycaster.Raycast(pointerData, results);
 
         foreach (RaycastResult result in results)
-        {
             foreach (GameObject button in buttons)
-            {
                 if (result.gameObject == button)
                     return button;
-            }
-        }
         return null;
     }
 }

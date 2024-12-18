@@ -15,7 +15,7 @@ public class MainUI : MonoBehaviour
 
 
     [Header("TitleMovePos")]
-    [SerializeField] private Transform _titlePos;
+    [SerializeField] private Transform _titlePos1;
     [SerializeField] private Transform _titlePos2;
     [SerializeField] private Transform _titlePos3;
 
@@ -34,6 +34,10 @@ public class MainUI : MonoBehaviour
     [SerializeField] private Transform _exitButtonPos2;
     [SerializeField] private Transform _exitButtonPos3;
 
+    [SerializeField] private Transform _titlePos;
+    [SerializeField] private Transform _Pos1;
+    [SerializeField] private Transform _pos2;
+    [SerializeField] private Transform _exitButtonPos;
 
     public GraphicRaycaster graphicRaycaster;
     public EventSystem eventSystem;
@@ -47,10 +51,15 @@ public class MainUI : MonoBehaviour
 
     private void OnEnable()
     {
+        MainUIManager.OnAnime += EndMove;
         _panel.DOFade(0, 1f);
         StartMove();
     }
 
+    private void OnDisable()
+    {
+        MainUIManager.OnAnime -= EndMove;
+    }
     private void StartMove()
     {
         var seq = DOTween.Sequence();
@@ -59,29 +68,55 @@ public class MainUI : MonoBehaviour
         var seqbtn3 = DOTween.Sequence();
 
         seq
-            .Prepend(_title.transform.DOMove(_titlePos2.position, 0.6f)).SetEase(Ease.InQuad)
+            .Prepend(_title.transform.DOMove(_titlePos2.position, 0.6f)).SetEase(Ease.OutBounce)
             .Append(_title.transform.DOMove(_titlePos3.position, 0.5f))
-            .Append(_title.transform.DOMove(_titlePos.position, 0.4f));
+            .Append(_title.transform.DOMove(_titlePos1.position, 0.4f));
 
         seqbtn1
-            .Insert(1.4f, _startButton.transform.DOMove(StartButtonPos3.position, 0.5f)).SetEase(Ease.InQuad)
+            .Insert(1.4f, _startButton.transform.DOMove(StartButtonPos3.position, 0.5f)).SetEase(Ease.OutBounce)
             .Append(_startButton.transform.DOMove(StartButtonPos2.position, 0.5f))
             .Append(_startButton.transform.DOMove(StartButtonPos1.position, 0.4f));
 
         seqbtn2
-            .Insert(2f, _settingButton.transform.DOMove(SettingButtonPos3.position, 0.5f)).SetEase(Ease.InQuad)
+            .Insert(2f, _settingButton.transform.DOMove(SettingButtonPos3.position, 0.5f)).SetEase(Ease.OutBounce)
             .Append(_settingButton.transform.DOMove(SettingButtonPos2.position, 0.5f))
             .Append(_settingButton.transform.DOMove(SettingButtonPos1.position, 0.4f));
 
         seqbtn3
-            .Insert(2.6f, _exitButton.transform.DOMove(_exitButtonPos3.position, 0.5f)).SetEase(Ease.InQuad)
+            .Insert(2.6f, _exitButton.transform.DOMove(_exitButtonPos3.position, 0.5f)).SetEase(Ease.OutBounce)
             .Append(_exitButton.transform.DOMove(_exitButtonPos2.position, 0.5f))
             .Append(_exitButton.transform.DOMove(_exitButtonPos1.position, 0.4f));
     }
 
+    public void EndMove()
+    {
+        var seq = DOTween.Sequence();
+        var seqbtn1 = DOTween.Sequence();
+        var seqbtn2 = DOTween.Sequence();
+        var seqbtn3 = DOTween.Sequence();
+
+        seq
+            .Prepend(_title.transform.DOMove(_titlePos.position, 2f)).SetEase(Ease.OutBounce);
+
+        seqbtn1
+            .Insert(0f, _startButton.transform.DOMove(SettingButtonPos2.position, 0.6f)).SetEase(Ease.OutBounce)
+            .Append(_startButton.transform.DOMove(_exitButtonPos2.position, 0.4f)).SetEase(Ease.OutBounce)
+            .Append(_startButton.transform.DOMove(_Pos1.position, 0.4f)).SetEase(Ease.OutBounce)
+            .Append(_startButton.transform.DOMove(_pos2.position, 0.4f)).SetEase(Ease.OutBounce);
+
+        seqbtn2 
+            .Insert(0.5f, _settingButton.transform.DOMove(_exitButtonPos2.position, 0.6f)).SetEase(Ease.OutBounce)
+            .Append(_settingButton.transform.DOMove(_Pos1.position, 0.4f)).SetEase(Ease.OutBounce)
+            .Append(_settingButton.transform.DOMove(_pos2.position, 0.4f)).SetEase(Ease.OutBounce);
+
+        seqbtn3
+            .Insert(1f, _exitButton.transform.DOMove(_Pos1.position, 0.6f)).SetEase(Ease.OutBounce)
+            .Append(_exitButton.transform.DOMove(_pos2.position, 0.4f)).SetEase(Ease.OutBounce);
+    }
+
     private void Update()
     {
-        OnMouse();
+        OnMouse(); 
     }
 
     private void OnMouse()
@@ -94,16 +129,12 @@ public class MainUI : MonoBehaviour
 
             foreach (GameObject button in buttons)
             {
-                if (button == null) continue; 
+                if (button == null) continue;
 
                 if (button == currentHoveredButton)
-                {
-                    button.transform.DOScale(1.5f, 0.3f); 
-                }
+                    button.transform.DOScale(1.5f, 0.3f);
                 else
-                {
-                    button.transform.DOScale(0.8f, 0.3f); 
-                }
+                    button.transform.DOScale(0.8f, 0.3f);
             }
         }
 
@@ -111,7 +142,8 @@ public class MainUI : MonoBehaviour
         {
             foreach (GameObject button in buttons)
             {
-                if (button == null) continue; 
+                if (button == null) continue;
+
                 button.transform.DOScale(1f, 0.3f);
             }
         }
@@ -130,13 +162,10 @@ public class MainUI : MonoBehaviour
         graphicRaycaster.Raycast(pointerData, results);
 
         foreach (RaycastResult result in results)
-        {
             foreach (GameObject button in buttons)
-            {
                 if (result.gameObject == button)
                     return button;
-            }
-        }
+
         return null;
     }
 }

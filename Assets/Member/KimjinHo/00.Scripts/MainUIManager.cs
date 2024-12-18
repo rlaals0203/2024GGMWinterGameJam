@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ public class MainUIManager : MonoBehaviour
 
     [SerializeField] private Image _panel;
 
+    public static Action OnAnime;
+
     private bool _setting = true;
 
     private void Awake()
@@ -26,18 +29,19 @@ public class MainUIManager : MonoBehaviour
     }
     private void FadeIn()
     {
-        _panel.DOFade(0, 1f).OnComplete(() => _panel.gameObject.SetActive(false)); 
+        _panel.DOFade(0, 1f).OnComplete(() => _panel.gameObject.SetActive(false));
     }
 
     public void FadeOut()
     {
         _panel.gameObject.SetActive(true);
-        _panel.DOFade(1, 1f).OnComplete(() => ChangeStartScene()); 
+        _panel.DOFade(1, 1f).OnComplete(() => ChangeStartScene());
     }
     public void FadeOut2()
     {
+        OnAnime?.Invoke();
         _panel.gameObject.SetActive(true);
-        _panel.DOFade(1, 1f).OnComplete(() => ChangeGameScene());
+        _panel.DOFade(1, 2f).OnComplete(() => ChangeGameScene());
     }
 
     public void ChangeGameScene()
