@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20f60b20a9137014db1dbcb2dc707fe2, type: 3}
-  m_Name: Test
+  m_Name: ExplosionParticle
   m_EditorClassIdentifier: 
-  poolName: Test
-  prefab: {fileID: 1532370021673675618, guid: cd696b751db8d064088d6fc677ddac49, type: 3}
+  poolName: ExplosionParticle
+  prefab: {fileID: 5606214132329947681, guid: ae69d07641fabf04a8c7c7da307c1108, type: 3}
   count: 10

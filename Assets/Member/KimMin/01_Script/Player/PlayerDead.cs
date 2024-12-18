@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDead : MonoBehaviour
+public class PlayerDead : MonoBehaviour, IPlayerComponent
 {
-    // Start is called before the first frame update
-    void Start()
+    private Bullet _bullet;
+
+    public void Initialize(Player player)
     {
-        
+        _bullet = player as Bullet;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.transform.TryGetComponent(out ICollisionable collisionable) ||
+            collision.transform.CompareTag("Wall"))
+        {
+            ExplosionPlayer();
+        }
+    }
+
+    private void ExplosionPlayer()
+    {
+        _bullet.gameObject.SetActive(false);
+        PoolManager.Instance.Pop("ExplosionParticle");
     }
 }
