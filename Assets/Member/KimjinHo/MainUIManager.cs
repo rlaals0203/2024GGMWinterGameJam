@@ -1,9 +1,9 @@
+using DG.Tweening;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 using UnityEngine.UIElements;
-using DG.Tweening;
-using System.Collections.Generic;
 
 public class MainUIManager : MonoBehaviour
 {
@@ -13,20 +13,24 @@ public class MainUIManager : MonoBehaviour
 
     [SerializeField] private TMP_Dropdown _dropdown;
 
+    [SerializeField] private AudioSource _aa;
+
     [Header("Sound")]
     [SerializeField] private SoundChannelSO _musicSound;
     [SerializeField] private SoundChannelSO _effectSound;
 
+    [SerializeField] private SoundManager _soundManager;
+
     private bool _setting = true;
-    private Slider _masterVolumeSlider;
-    private Slider _musicVolumeSlider;
-    private Slider _effectVolumeSlider;
 
     private void Awake()
     {
         _settingPanel.SetActive(false);
+        _musicSound.players[0] = _aa;
+        _musicSound.players[0].Play();
     }
-    public void OnGameStart()
+
+    public void ChangeScene()
     {
         SceneManager.LoadScene(_gmaeScnenName);
     }
@@ -89,39 +93,28 @@ public class MainUIManager : MonoBehaviour
                 break;
         }
     }
-    private void Initialize()
-    {
-        //_masterVolumeSlider.value = masterVolume;
 
-        //_musicVolumeSlider.value = musicVolume;
-
-        //_effectVolumeSlider.value = effectVolume;
-
-        ////masterSound.volume = masterVolume;
-        //_musicSound.volume = musicVolume;
-        //_effectSound.volume = effectVolume;
-
-    }
-    public void MasterSlider(float changeEvent)
+    private void MasterSlider(float changeEvent)
     {
         float newVolume = changeEvent / 100f; // 0~100 범위 -> 0~1로 변환
         _musicSound.UpdateVolume(newVolume);
         _effectSound.UpdateVolume(newVolume);
-        _musicSound.playOnAwake = true;
-        _effectSound.playOnAwake = true;
+        PlayerPrefs.SetFloat("MasterVolume", newVolume);
     }
 
-    public void MusicSlider(float changeEvent)
+    private void MusicSlider(float changeEvent)
     {
         // 사운드 세팅
         float newVolume = changeEvent / 100f;
         _musicSound.UpdateVolume(newVolume);
+        PlayerPrefs.SetFloat("MusicVolume", newVolume);
     }
 
-    public void EffectSlider(float changeEvent)
+    private void EffectSlider(float changeEvent)
     {
         // 사운드 세팅
         float newVolume = changeEvent / 100f;
         _effectSound.UpdateVolume(newVolume); ;
+        PlayerPrefs.SetFloat("EffectVolume", newVolume);
     }
 }

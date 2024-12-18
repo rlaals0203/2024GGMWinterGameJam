@@ -1,6 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SoundManager : MonoSingleton<SoundManager>
@@ -8,13 +7,23 @@ public class SoundManager : MonoSingleton<SoundManager>
     [SerializeField] private List<SoundChannelSO> soundChannels;
     public Dictionary<SoundType, SoundChannelSO> _channels;
 
-    private void Awake()
+    private void Start()
     {
         Initialize();
+        _channels.Add(SoundType.BGM, soundChannels[0]);
+
     }
 
     private void Initialize()
     {
+        Debug.Log(soundChannels);
+
+        if (soundChannels == null || soundChannels.Count == 0)
+        {
+            Debug.LogError("soundChannels is null or empty.");
+            return;
+        }
+
         _channels = new Dictionary<SoundType, SoundChannelSO>();
 
         foreach (SoundChannelSO soundChannel in soundChannels)
@@ -41,6 +50,7 @@ public class SoundManager : MonoSingleton<SoundManager>
             _channels.Add(soundChannel.channelType, soundChannel);
         }
     }
+
 
     public void PlaySound(SoundType type, string value)
     {
@@ -77,27 +87,4 @@ public class SoundManager : MonoSingleton<SoundManager>
             break;
         }
     }
-
-    public void PlaySoundLoopInChannel(SoundType type, float waitTime = 0f)
-        => StartCoroutine(PlaySoundLoopInChannelCoroutine(type, waitTime));
-
-    public void StopSoundLoopInChannel(SoundType type)
-        => StopCoroutine(PlaySoundLoopInChannelCoroutine(type, 0f));
-
-    private IEnumerator PlaySoundLoopInChannelCoroutine(SoundType type, float waitTime)
-    {
-        NotOverlapValue<AudioClip> clips = new NotOverlapValue<AudioClip>(_channels[type].clips.Values);
-        _channels[type].players[0].loop = false;
-
-        while (true)
-        {
-            _channels[type].players[0].clip = clips.GetValue();
-            _channels[type].players[0].Play();
-            yield return new WaitUntil(() => !_channels[type].players[0].isPlaying);
-            yield return new WaitForSeconds(waitTime);
-        }
-    }
-
-    public void StopSoundInChannel(SoundType type)
-        => _channels[type].players.ToList().ForEach(player => player.Stop());
 }

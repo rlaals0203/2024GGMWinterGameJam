@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45ee0cb3fa92ecf4fa596e46cd731090, type: 3}
-  m_Name: New Sound SO
+  m_Name: B
   m_EditorClassIdentifier: 
   key: New Sound SO
   clip: {fileID: 8300000, guid: ae43e629047161248b1011833eafee6c, type: 3}

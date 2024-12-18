@@ -1,5 +1,8 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MainUI : MonoBehaviour
 {
@@ -8,6 +11,7 @@ public class MainUI : MonoBehaviour
     [SerializeField] private GameObject _startButton;
     [SerializeField] private GameObject _settingButton;
     [SerializeField] private GameObject _exitButton;
+
 
     [Header("TitleMovePos")]
     [SerializeField] private Transform _titlePos;
@@ -30,7 +34,18 @@ public class MainUI : MonoBehaviour
     [SerializeField] private Transform _exitButtonPos3;
 
 
+    public GraphicRaycaster graphicRaycaster;
+    public EventSystem eventSystem;
+
+    [SerializeField] private List<GameObject> buttons; // 여러 버튼들을 담을 리스트
+    private GameObject currentHoveredButton = null;   // 현재 마우스가 오버된 버튼
+
     private void Start()
+    {
+        StartMove();
+    }
+
+    private void StartMove()
     {
         var seq = DOTween.Sequence();
         var seqbtn1 = DOTween.Sequence();
@@ -55,4 +70,50 @@ public class MainUI : MonoBehaviour
             .Append(_exitButton.transform.DOMove(_exitButtonPos2.position, 0.5f))
             .Append(_exitButton.transform.DOMove(_exitButtonPos1.position, 0.4f));
     }
+
+    private void Update()
+    {
+        OnMouse();
+    }
+
+    private void OnMouse()
+    {
+        GameObject hoveredButton = GetHoveredButton();
+
+        if (hoveredButton != currentHoveredButton)
+        {
+            currentHoveredButton = hoveredButton;
+
+            // 모든 버튼의 크기를 업데이트
+            foreach (GameObject button in buttons)
+            {
+                if (button == currentHoveredButton)
+                    button.transform.DOScale(1.5f, 0.3f);
+                else
+                    button.transform.DOScale(1f, 0.3f);
+            }
+        }
+    }
+
+    private GameObject GetHoveredButton()
+    {
+        PointerEventData pointerData = new PointerEventData(eventSystem)
+        {
+            position = Input.mousePosition
+        };
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        graphicRaycaster.Raycast(pointerData, results);
+
+        foreach (RaycastResult result in results)
+        {
+            foreach (GameObject button in buttons)
+            {
+                if (result.gameObject == button)
+                    return button;
+            }
+        }
+        return null;
+    }
+
 }
