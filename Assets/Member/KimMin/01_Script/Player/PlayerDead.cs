@@ -1,9 +1,13 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class PlayerDead : MonoBehaviour, IPlayerComponent
 {
+    public event Action OnDeadEvent;
+    public event Action OnCutSceneEnd;
+
     private Bullet _bullet;
     private EffectPlayer _effectPlayer;
 
@@ -26,12 +30,13 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
             StartCoroutine(CutSceneRoutine());
 
             Time.timeScale = 0.5f;
+            OnDeadEvent?.Invoke();
         }
     }
 
     private void ExplosionPlayer()
     {
-        _bullet.PlayerVisualCompo.renderer.enabled = false;
+        _bullet.VisualCompo.renderer.enabled = false;
         _bullet.RigidCompo.velocity = Vector2.zero;
         _bullet.RigidCompo.simulated = false;
 
@@ -41,8 +46,12 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
 
     private IEnumerator CutSceneRoutine()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.65f);
 
-        _bullet.cutScene.DOFade(0f, 0.5f);
+        _bullet.cutScene.DOFade(0f, 0.5f)
+            .OnComplete(() =>
+        {
+            OnCutSceneEnd?.Invoke();
+        });
     }
 }
