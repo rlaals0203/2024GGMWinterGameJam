@@ -20,7 +20,7 @@ public class ReflectBlock : MonoBehaviour
             }
             else
             {
-                float velocity = bullet.RigidCompo.velocity.x;
+                float velocity = bullet.RigidCompo.velocity.y;
                 bullet.moveDir = Vector2.right;
                 WindController.Instance.RightWind();
 

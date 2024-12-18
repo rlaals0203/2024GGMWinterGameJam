@@ -58,10 +58,7 @@ public class Bullet : Player, IBlowable
 
     private void BulletMove()
     {
-        if (WindController.Instance.isHorizontal)
-        {
-            RigidCompo.AddForce(moveDir * bulletSpeed);
-        }
+        RigidCompo.AddForce(moveDir * bulletSpeed);
     }
 
     public Rigidbody2D AssignRigidbody()
