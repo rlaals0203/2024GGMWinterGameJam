@@ -10,6 +10,6 @@ public class ExplosionParticle : MonoBehaviour, IPoolable
 
     public void ResetItem()
     {
-        PoolManager.Instance.Pop(PoolName);
+        gameObject.SetActive(false);
     }
 }

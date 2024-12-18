@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDead : MonoBehaviour, IPlayerComponent
 {
     private Bullet _bullet;
+    private EffectPlayer _effectPlayer;
 
     public void Initialize(Player player)
     {
@@ -23,6 +24,8 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
     private void ExplosionPlayer()
     {
         _bullet.gameObject.SetActive(false);
-        PoolManager.Instance.Pop("ExplosionParticle");
+        _effectPlayer = PoolManager.Instance.Pop("ExplosionParticle") as EffectPlayer;
+
+        _effectPlayer.SetPositionAndPlay(transform.position);
     }
 }
