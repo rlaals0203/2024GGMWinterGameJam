@@ -13,7 +13,7 @@ public class MouseBarrier : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void FixedUpdate ()
+    private void Update()
     {
         SetBarrierPosition();
     }
