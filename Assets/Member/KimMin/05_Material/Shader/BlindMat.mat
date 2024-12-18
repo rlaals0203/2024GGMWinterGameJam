@@ -57,7 +57,7 @@ Material:
     - _LineThick: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _size: 1
+    - _size: 0.269
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

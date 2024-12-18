@@ -6,6 +6,8 @@ public class WindController : MonoSingleton<WindController>
     public const float GRAVITY = 9.81f;
     public event Action OnWindChanged;
 
+    public bool isHorizontal = true;
+
 	public float gravityScale = 1f;
 	public float changeTime = 0.1f;
 
@@ -24,10 +26,16 @@ public class WindController : MonoSingleton<WindController>
 
     private void ChangeWind()
     {
-        if (Input.GetKeyDown(KeyCode.W)) UpWind();
-        else if (Input.GetKeyDown(KeyCode.A)) LeftWind();
-        else if (Input.GetKeyDown(KeyCode.S)) DownWind();
-        else if (Input.GetKeyDown(KeyCode.D)) RightWind();
+        if (isHorizontal)
+        {
+            if (Input.GetKeyDown(KeyCode.W)) UpWind();
+            else if (Input.GetKeyDown(KeyCode.S)) DownWind();
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.A)) LeftWind();
+            else if (Input.GetKeyDown(KeyCode.D)) RightWind();
+        }
 
         if (currentGravity != Vector2.zero && prevGravity != currentGravity)
             SetWind(currentGravity);
