@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ public class Player : MonoBehaviour
 {
     public bool IsAwake { get; protected set; } = false;
     public bool IsHorizontal { get; protected set; } = true;
+    public Transform CameraPos { get; protected set; }
 
     public float bulletSpeed = 10f;
     public float shotPower = 100f;
@@ -25,6 +27,8 @@ public class Player : MonoBehaviour
             .ForEach(x => _components.Add(x.GetType(), x));
 
         _components.Values.ToList().ForEach(compo => compo.Initialize(this));
+
+        CameraPos = transform.Find("CameraPos");
     }
 
     public T GetCompo<T>() where T : class
