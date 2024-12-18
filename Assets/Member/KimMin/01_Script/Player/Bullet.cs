@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class Bullet : Player, IBlowable
 {
@@ -10,7 +11,22 @@ public class Bullet : Player, IBlowable
     private void OnEnable()
     {
         releaseShot.OnShotEvent += HandleOnShot;
+        OnSceneLoadComplete += HandleSceneLoaded;
         WindController.Instance.OnWindChanged += HandleGravityChanged;
+    }
+
+    private void OnDisable()
+    {
+        releaseShot.OnShotEvent -= HandleOnShot;
+        OnSceneLoadComplete -= HandleSceneLoaded;
+        WindController.Instance.OnWindChanged -= HandleGravityChanged;
+    }
+
+    private void Start()
+    {
+        startPos = GameObject.Find("Gun").transform;
+
+        ResetBullet();
     }
 
     private void FixedUpdate()
@@ -34,18 +50,14 @@ public class Bullet : Player, IBlowable
 
         RigidCompo.simulated = true;
         RigidCompo.AddForce(shotDir * shotPower);
+        CameraPos.parent = transform;
 
         float diffrence = Quaternion.Angle(gun.rotation, Quaternion.Euler(0, 0, 0));
 
         if (diffrence < 45)
-        {
             moveDir = Vector2.right;
-        }
         else if (diffrence > 45 && diffrence < 90)
-        {
             moveDir = Vector2.right;
-        }
-
     }
 
     private void BulletMove()
@@ -55,7 +67,24 @@ public class Bullet : Player, IBlowable
 
     public void HandleKillTarget()
     {
+        ResetBullet();
+    }
 
+    private void HandleSceneLoaded()
+    {
+        ResetBullet();
+    }
+
+    public void ResetBullet()
+    {
+        transform.localRotation = Quaternion.identity;
+        RigidCompo.velocity = Vector2.zero;
+        transform.position = startPos.position;
+
+        CameraPos.parent = gunTrm.transform;
+
+        VisualCompo.renderer.enabled = false;
+        Time.timeScale = 1f;
     }
 
     public Rigidbody2D AssignRigidbody()

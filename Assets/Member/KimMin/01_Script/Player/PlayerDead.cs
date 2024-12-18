@@ -36,7 +36,7 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
 
     private void ExplosionPlayer()
     {
-        _bullet.PlayerVisualCompo.renderer.enabled = false;
+        _bullet.VisualCompo.renderer.enabled = false;
         _bullet.RigidCompo.velocity = Vector2.zero;
         _bullet.RigidCompo.simulated = false;
 

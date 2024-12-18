@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6726080230956957747}
   - component: {fileID: 2041072256699684191}
   m_Layer: 0
-  m_Name: BulletExplostion
+  m_Name: KillParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,8 +223,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
-      maxColor: {r: 0.59748423, g: 0.59748423, b: 0.59748423, a: 1}
+      minColor: {r: 0.5031446, g: 0, b: 0, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1670,8 +1670,8 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 3
-      scalar: -4
-      minScalar: 4
+      scalar: 0
+      minScalar: 20
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5017,4 +5017,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd566c50be9cfe44afe828aa8b9b474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolName: ExplosionParticle
+  _poolName: KillParticle

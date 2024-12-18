@@ -6,17 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    protected event Action OnSceneLoadComplete;
+
     public Transform CameraPos { get; protected set; }
-    public PlayerVisual PlayerVisualCompo { get; protected set; }
+    public PlayerVisual VisualCompo { get; protected set; }
+
+    [HideInInspector] public Vector3 moveDir;
+    [HideInInspector] public ReleaseShot releaseShot;
+    [HideInInspector] public SpriteRenderer cutScene;
+    [HideInInspector] public Transform startPos;
+    [HideInInspector] public Transform gunTrm;
 
     public float bulletSpeed = 10f;
     public float shotPower = 100f;
-
-    public Vector3 moveDir;
-    public ReleaseShot releaseShot;
-    public SpriteRenderer cutScene;
-
-    public Transform startPos;
 
     private Dictionary<Type, IPlayerComponent> _components;
 
@@ -31,9 +33,10 @@ public class Player : MonoBehaviour
 
         StageManager.Instance.OnStageLoaded += HandleStageLoad;
 
+        gunTrm = GameObject.Find("Gun").transform;
         CameraPos = transform.Find("CameraPos");
         cutScene = transform.Find("CutScene").GetComponent<SpriteRenderer>();
-        PlayerVisualCompo = GetCompo<PlayerVisual>();
+        VisualCompo = GetCompo<PlayerVisual>();
     }
 
     private void HandleStageLoad()
@@ -43,7 +46,8 @@ public class Player : MonoBehaviour
             break;
         }
 
-        startPos = GameObject.Find("StartPos").transform;
+        startPos = GameObject.Find("Gun").transform;
+        OnSceneLoadComplete?.Invoke();
     }
 
     private string GetSceneName() => SceneManager.GetActiveScene().name;

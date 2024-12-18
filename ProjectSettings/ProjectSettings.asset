@@ -786,11 +786,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: e661f30c-40ad-4a35-badd-038b726e3864
+  cloudProjectId: 28cfbde8-fb16-485f-b32d-65c74a662693
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: TestGameJam
-  organizationId: kimjinho1
+  organizationId: rlaals0203
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
