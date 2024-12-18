@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System;
+using System.Linq.Expressions;
 
 public class Bullet : Player, IBlowable
 {
@@ -41,6 +42,8 @@ public class Bullet : Player, IBlowable
 
     private void HandleOnShot(Vector2 shotDir, Transform gun)
     {
+        if (!CanShot) return;
+
         WindController.Instance.UpWind();
         CameraPos.transform.DOShakePosition(0.1f, 4f);
 
@@ -58,6 +61,8 @@ public class Bullet : Player, IBlowable
             moveDir = Vector2.right;
         else if (diffrence > 45 && diffrence < 90)
             moveDir = Vector2.right;
+
+        CanShot = false;
     }
 
     private void BulletMove()
@@ -84,6 +89,7 @@ public class Bullet : Player, IBlowable
         CameraPos.parent = gunTrm.transform;
 
         VisualCompo.renderer.enabled = false;
+        CanShot = true;
         Time.timeScale = 1f;
     }
 

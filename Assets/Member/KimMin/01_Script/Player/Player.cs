@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     protected event Action OnSceneLoadComplete;
 
+    public bool CanShot { get; protected set; } = true;
     public Transform CameraPos { get; protected set; }
     public PlayerVisual VisualCompo { get; protected set; }
 
