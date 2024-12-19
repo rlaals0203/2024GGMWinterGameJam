@@ -11,7 +11,7 @@ public class BreakWall : MonoBehaviour
     {
         if (collision.TryGetComponent(out Bullet bullet))
         {
-            if (bullet.RigidCompo.velocity.magnitude < 25)
+            if (bullet.RigidCompo.velocity.magnitude < 22)
             {
                 bullet.GetCompo<PlayerDead>().KillPlayer();
                 return;

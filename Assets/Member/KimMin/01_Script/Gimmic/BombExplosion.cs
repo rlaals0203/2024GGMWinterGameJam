@@ -20,6 +20,7 @@ public class BombExplosion : MonoBehaviour, IBlowable
 
     private void Explosion()
     {
+        AudioManager.Instance.PlaySound("Bomb");
         EffectPlayer effect = PoolManager.Instance.Pop("BombExplosion") as EffectPlayer;
         effect.SetPositionAndPlay(transform.position);
         gameObject.SetActive(false);

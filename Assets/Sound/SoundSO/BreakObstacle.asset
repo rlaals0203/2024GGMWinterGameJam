@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BreakObstacle
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  clip: {fileID: 8300000, guid: c92afb6f35ee087488cef6eeed41a068, type: 3}
+  clip: {fileID: 8300000, guid: 23cfa2862be03a0409b71585e052f39f, type: 3}
   volume: 1
   Name: BreakObstacle
