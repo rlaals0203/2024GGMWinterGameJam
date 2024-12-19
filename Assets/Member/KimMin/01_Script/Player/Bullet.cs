@@ -93,7 +93,9 @@ public class Bullet : Player, IBlowable
 
         Time.timeScale = 1f;
         WindController.Instance.isHorizontal = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        if (!StageManager.Instance.isLoading)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public Rigidbody2D AssignRigidbody()

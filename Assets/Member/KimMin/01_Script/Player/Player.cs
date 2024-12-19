@@ -48,6 +48,9 @@ public class Player : MonoBehaviour
             break;
         }
 
+        Debug.Log(StageManager.Instance.currentStage);
+
+        StageManager.Instance.isLoading = false;
         startPos = GameObject.Find("Gun").transform;
         OnSceneLoadComplete?.Invoke();
     }

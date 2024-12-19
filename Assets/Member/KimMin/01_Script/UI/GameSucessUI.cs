@@ -2,6 +2,8 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 using Unity.VisualScripting;
+using System.Security.Cryptography;
+using UnityEngine.SceneManagement;
 
 public class GameSucessUI : MonoBehaviour
 {
@@ -34,7 +36,6 @@ public class GameSucessUI : MonoBehaviour
     public void Next()
     {
         Cursor.visible = false;
-        StageManager.Instance.currentStage++;
         StageManager.Instance.LoadStage();
     }
 
