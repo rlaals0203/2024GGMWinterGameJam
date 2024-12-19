@@ -41,7 +41,9 @@ public class MainUI : Hover
     private void OnEnable()
     {
         MainUIManager.OnAnime += EndMove;
-        _panel.DOFade(0, 1f);
+        if (_panel != null)
+            _panel.DOFade(0, 1f);
+
         StartMove();
     }
 
