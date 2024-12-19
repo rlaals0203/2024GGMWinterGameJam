@@ -36,6 +36,7 @@ public class GameOverUI : MonoBehaviour
 
     public void Exit()
     {
+        DOTween.KillAll();
         SceneManager.LoadScene("Title");
     }
 
