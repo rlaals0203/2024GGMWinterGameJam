@@ -12,7 +12,15 @@ public class StageChose : Hover
 
     private Image _panel;
 
-    public void OnStageClick(int stageNumber) => FadeOut($"Stage{stageNumber + 1}");
+    public void OnStageClick(int stageNumber)
+    {
+        FadeOut($"Stage{stageNumber + 1}");  
+    }
+
+    public void OnUnlock()
+    {
+
+    }
 
     public void ChangeStartScene()
     {

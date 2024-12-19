@@ -33,8 +33,6 @@ public class BackgroundMusicVolumeController : MonoBehaviour
         SetSound(soundManager._bgm);
         SoundPlay(bgSound.sounds[0].clip);
         bgSound.sounds[0].SoundPlay();
-
-        DontDestroyOnLoad(this);
     }
 
     public void UpSound()
