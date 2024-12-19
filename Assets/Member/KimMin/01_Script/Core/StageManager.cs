@@ -8,12 +8,12 @@ public class StageManager : MonoSingleton<StageManager>
     public int maxStage = 1;
     public bool isLoading = false;
     public event Action OnStageLoaded;
-    public string saveName = "maxStage";
+    /*public string saveName = "maxStage";*/
 
     private void Awake()
     {
         DontDestroyOnLoad(this);
-        maxStage = PlayerPrefs.GetInt(saveName);
+        //maxStage = PlayerPrefs.GetInt(saveName);
     }
 
     public void LoadStage()
@@ -29,7 +29,7 @@ public class StageManager : MonoSingleton<StageManager>
         if (currentStage > maxStage)
         {
             maxStage = currentStage;
-            PlayerPrefs.SetInt(saveName, maxStage);
+            //PlayerPrefs.SetInt(saveName, maxStage);
         }
 
         SceneManager.LoadScene($"Stage{currentStage}");

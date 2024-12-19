@@ -2213,9 +2213,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4112208666664562498}
+      - m_Target: {fileID: 1761982938775197334}
         m_TargetAssemblyTypeName: GameSucessUI, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
