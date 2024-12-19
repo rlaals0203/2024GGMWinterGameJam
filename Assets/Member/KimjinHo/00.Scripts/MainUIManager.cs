@@ -99,17 +99,4 @@ public class MainUIManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void SetScreenMode(int index)
-    {
-        switch (index)
-        {
-            case 0:
-                Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
-                break;
-
-            case 1:
-                Screen.fullScreenMode = FullScreenMode.Windowed;
-                break;
-        }
-    }
 }

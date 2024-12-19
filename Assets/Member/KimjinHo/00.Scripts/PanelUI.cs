@@ -63,4 +63,19 @@ public class PanelUI : MonoBehaviour
         });
         _istrue = false;
     }
+
+
+    public void SetScreenMode(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+                break;
+
+            case 1:
+                Screen.fullScreenMode = FullScreenMode.Windowed;
+                break;
+        }
+    }
 }
