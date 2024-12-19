@@ -1,6 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoBehaviour
 {
@@ -31,16 +31,18 @@ public class GameOverUI : MonoBehaviour
     {
         _gameOverUI.SetActive(true);
         _gameOverUI.transform.DOMoveY(540, 1f).SetEase(Ease.OutExpo);
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void Exit()
     {
-
+        SceneManager.LoadScene("Title");
     }
 
     public void Retry()
     {
+        Cursor.visible = false;
+
         _gameOverUI.transform.DOMoveY(1540, 1f).SetEase(Ease.OutExpo)
             .OnComplete(() =>
         {

@@ -28,17 +28,20 @@ public class GameSucessUI : MonoBehaviour
     {
         _gameSucessUI.SetActive(true);
         _gameSucessUI.transform.DOMoveY(540, 1f).SetEase(Ease.OutExpo);
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void Next()
     {
+        Cursor.visible = false;
         StageManager.Instance.currentStage++;
         StageManager.Instance.LoadStage();
     }
 
     public void Retry()
     {
+        Cursor.visible = false;
+
         _gameSucessUI.transform.DOMoveY(1540, 1f).SetEase(Ease.OutExpo)
             .OnComplete(() =>
             {
