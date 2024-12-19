@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 409286803}
   - component: {fileID: 409286802}
   m_Layer: 0
-  m_Name: background
+  m_Name: StageBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
