@@ -49,6 +49,8 @@ public class GameOverUI : MonoBehaviour
         {
             _gameOverUI.SetActive(false);
             _bullet.ResetBullet();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
         });
     }
 }
