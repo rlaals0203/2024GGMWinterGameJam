@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDead : MonoBehaviour, IPlayerComponent
 {
@@ -61,6 +62,7 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
             .OnComplete(() =>
         {
             OnCutSceneEnd?.Invoke();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         });
     }
 }

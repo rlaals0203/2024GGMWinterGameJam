@@ -20,6 +20,7 @@ public class StageChose : Hover
     {
         if (StageManager.Instance.currentStage >= stageNumber + 1)
         {
+            StageManager.Instance.currentStage = stageNumber + 1;
             FadeOut($"Stage{stageNumber + 1}");
             OutMove();
         }
