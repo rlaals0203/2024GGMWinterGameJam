@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SettingButton : MonoBehaviour
+public class SettingButton : Hover
 {
     [SerializeField] private string _sceneName;
 
@@ -16,6 +16,8 @@ public class SettingButton : MonoBehaviour
     }
     private void Update()
     {
+
+        OnMouse();
         if (Input.GetKeyDown(KeyCode.Escape))
             Panel(_istrue);
     }
@@ -69,13 +71,41 @@ public class SettingButton : MonoBehaviour
         Application.Quit();
     }
 
-
-
     public void ChangeStartScene()
     {
         Destroy(_gameObject);
         DOTween.KillAll();
         if (_sceneName != null)
             SceneManager.LoadScene(_sceneName);
+    }
+
+    public override void OnMouse()
+    {
+        GameObject hoveredButton = GetHoveredButton();
+
+        if (hoveredButton != CurrentHoveredButton)
+        {
+            CurrentHoveredButton = hoveredButton;
+
+            foreach (GameObject button in Button)
+            {
+                if (button == null) continue;
+
+                if (button == CurrentHoveredButton)
+                    button.transform.DOScale(1.3f, 0.3f);
+                else
+                    button.transform.DOScale(1f, 0.3f);
+            }
+        }
+
+        if (CurrentHoveredButton == null)
+        {
+            foreach (GameObject button in Button)
+            {
+                if (button == null) continue;
+
+                button.transform.DOScale(1f, 0.3f);
+            }
+        }
     }
 }

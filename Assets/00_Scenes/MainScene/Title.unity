@@ -3203,6 +3203,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b12c20e46a6194cb70a5697184a905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Button:
+  - {fileID: 1111019055}
+  - {fileID: 1698764467}
+  - {fileID: 27071589}
+  - {fileID: 1467977639}
+  - {fileID: 251532756980954488}
+  - {fileID: 1357287412}
+  - {fileID: 277311670}
+  - {fileID: 4839271239373317772}
+  GraphicRaycaster: {fileID: 155560343}
+  EventSystem: {fileID: 277305334}
   _sceneName: Title
   _gameObject: {fileID: 1378608168769789649}
 --- !u!1 &1159175526
@@ -6425,7 +6436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 252473f43c35a7b44be03db6c8826587, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6455,8 +6466,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 252473f43c35a7b44be03db6c8826587, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6722,7 +6733,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -30, y: 0}
+  m_AnchoredPosition: {x: -44.9, y: 0}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4092596966292865377
@@ -7009,7 +7020,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 30, y: 0}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5635929396885601251
 CanvasRenderer:
@@ -7362,13 +7373,13 @@ MonoBehaviour:
   m_text: Option A
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2436198f3f302714bb9f7514ea5a2dbe, type: 2}
-  m_sharedMaterial: {fileID: 7740537668304725387, guid: cf3fa1acddf6ba647a50671b436ba008, type: 2}
+  m_sharedMaterial: {fileID: 7204486283383047815, guid: 2436198f3f302714bb9f7514ea5a2dbe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -7425,7 +7436,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &7032868646642117636
