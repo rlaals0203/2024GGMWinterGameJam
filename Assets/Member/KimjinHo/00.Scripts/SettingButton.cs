@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SettingButton : MonoBehaviour
@@ -16,6 +17,7 @@ public class SettingButton : MonoBehaviour
     private GameObject currentHoveredSettingButton = null;
 
 
+    [SerializeField] private string _sceneName;
 
     private void Awake()
     {
@@ -26,6 +28,26 @@ public class SettingButton : MonoBehaviour
         OnMouse();
         OnExitMouse();
     }
+
+    public void FadeOut1()
+    {
+        ChangeStartScene();
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+
+
+    public void ChangeStartScene()
+    {
+        DOTween.KillAll();
+        if (_sceneName != null)
+            SceneManager.LoadScene(_sceneName);
+    }
+
 
     private void OnMouse()
     {
