@@ -13,7 +13,7 @@ public class ViewUI : MonoBehaviour
     }
     public void OnUnlock()
     {
-        int i = StageManager.Instance.currentStage;
+        int i = StageManager.Instance.maxStage;
         if (1 <= i)
             Locks[0].gameObject.SetActive(false);
         if (2 <= i)

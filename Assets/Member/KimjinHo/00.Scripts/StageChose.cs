@@ -18,9 +18,9 @@ public class StageChose : Hover
 
     public void OnStageClick(int stageNumber)
     {
-        if (StageManager.Instance.currentStage >= stageNumber + 1)
+        if (StageManager.Instance.maxStage >= stageNumber + 1)
         {
-            StageManager.Instance.currentStage = stageNumber + 1;
+            StageManager.Instance.maxStage = stageNumber + 1;
             FadeOut($"Stage{stageNumber + 1}");
             OutMove();
         }
@@ -29,7 +29,7 @@ public class StageChose : Hover
     public void OnUnlock()
     {
         OnUnLock?.Invoke();
-        if (StageManager.Instance.currentStage >= 8)
+        if (StageManager.Instance.maxStage >= 8)
         {
             for (int i = 0; i < 8; i++)
             {
@@ -38,7 +38,7 @@ public class StageChose : Hover
         }
         else
         {
-            for (int i = 0; i < StageManager.Instance.currentStage; i++)
+            for (int i = 0; i < StageManager.Instance.maxStage; i++)
             {
                 Locks[i].gameObject.SetActive(false);
             }
