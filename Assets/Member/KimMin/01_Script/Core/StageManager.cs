@@ -17,8 +17,8 @@ public class StageManager : MonoSingleton<StageManager>
 
     public void LoadStage()
     {
-        currentStage++;
         isLoading = true;
+        currentStage++;
         SceneManager.LoadScene($"Stage{currentStage}");
 
         OnStageLoaded?.Invoke();

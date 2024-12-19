@@ -50,6 +50,11 @@ public class Player : MonoBehaviour
 
         Debug.Log(StageManager.Instance.currentStage);
 
+        if($"Stage{StageManager.Instance.currentStage}" != GetSceneName())
+        {
+            SceneManager.LoadScene($"Stage{StageManager.Instance.currentStage}");
+        }
+
         StageManager.Instance.isLoading = false;
         startPos = GameObject.Find("Gun").transform;
         OnSceneLoadComplete?.Invoke();
