@@ -12,7 +12,7 @@ public class SettingButton : Hover
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        
     }
     private void Update()
     {
