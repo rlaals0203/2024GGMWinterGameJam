@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 public class AudioManager : MonoSingleton<AudioManager>
 {
@@ -8,18 +10,20 @@ public class AudioManager : MonoSingleton<AudioManager>
     private void Awake()
     {
         foreach (var sound in soundChanelSO.sounds)
-        {
+        { 
             soundDic.Add(sound,  sound.Name);
         }
     }
 
     public void PlaySound(string name)
     {
-        foreach (var dic in soundDic)
+        foreach (var pair in soundDic)
         {
-            if (dic.Key.Equals(name))
+            if (pair.Value == name)
             {
-                dic.Key.SoundPlay();
+                pair.Key.SoundClip();
+                pair.Key.SoundPlay();
+                return;
             }
         }
     }

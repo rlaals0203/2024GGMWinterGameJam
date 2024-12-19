@@ -49,6 +49,7 @@ public class KillTarget : MonoBehaviour
         _bullet.RigidCompo.velocity = Vector2.zero;
         _bullet.RigidCompo.simulated = false;
 
+        AudioManager.Instance.PlaySound("KillSound");
         EffectPlayer _effectPlayer = PoolManager.Instance.Pop("KillParticle") as EffectPlayer;
         _effectPlayer.SetPositionAndPlay(transform.position);
     }
