@@ -106,4 +106,34 @@ public class MainUI : Hover
     {
         OnMouse();
     }
+
+    public override void OnMouse()
+    {
+        GameObject hoveredButton = GetHoveredButton();
+
+        if (hoveredButton != CurrentHoveredButton)
+        {
+            CurrentHoveredButton = hoveredButton;
+
+            foreach (GameObject button in Button)
+            {
+                if (button == null) continue;
+
+                if (button == CurrentHoveredButton)
+                    button.transform.DOScale(1.2f, 0.3f);
+                else
+                    button.transform.DOScale(0.8f, 0.3f);
+            }
+        }
+
+        if (CurrentHoveredButton == null)
+        {
+            foreach (GameObject button in Button)
+            {
+                if (button == null) continue;
+
+                button.transform.DOScale(1f, 0.3f);
+            }
+        }
+    }
 }
