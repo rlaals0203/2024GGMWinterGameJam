@@ -62,6 +62,7 @@ public class Bullet : Player, IBlowable
             moveDir = Vector2.right;
 
         CanShot = false;
+        Time.timeScale = 1f;
         AudioManager.Instance.PlaySound("Shot");
     }
 
