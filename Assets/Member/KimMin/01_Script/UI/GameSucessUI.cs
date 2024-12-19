@@ -31,6 +31,7 @@ public class GameSucessUI : MonoBehaviour
         _gameSucessUI.SetActive(true);
         _gameSucessUI.transform.DOMoveY(540, 1f).SetEase(Ease.OutExpo);
         Cursor.visible = true;
+
     }
 
     public void Next()
