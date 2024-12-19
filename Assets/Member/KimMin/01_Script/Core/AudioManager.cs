@@ -13,6 +13,8 @@ public class AudioManager : MonoSingleton<AudioManager>
         { 
             soundDic.Add(sound,  sound.Name);
         }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public void PlaySound(string name)
