@@ -9,17 +9,25 @@ public class StageChose : Hover
     [SerializeField] private Transform[] _inStatePos;
     [SerializeField] private Transform[] _outStatePos;
 
+    [SerializeField] private GameObject[] Locks;
 
     private Image _panel;
 
     public void OnStageClick(int stageNumber)
     {
-        FadeOut($"Stage{stageNumber + 1}");  
+        if (StageManager.Instance.currentStage >= stageNumber + 1)
+        {
+            FadeOut($"Stage{stageNumber + 1}");
+            OutMove();
+        }
     }
 
     public void OnUnlock()
     {
-
+        for (int i = 0; i < StageManager.Instance.currentStage; i++)
+        {
+            Locks[i].gameObject.SetActive(false);
+        }
     }
 
     public void ChangeStartScene()
@@ -40,17 +48,24 @@ public class StageChose : Hover
         SceneManager.LoadScene(str);
     }
 
-    private void OnEnable() => InMove();
+    private void OnEnable() 
+    {
+        OnUnlock();
+        InMove();
+    } 
 
-    private void Awake() => _panel = transform.Find("Fade").GetComponent<Image>();
+    private void Awake()
+    {
+        _panel = transform.Find("Fade").GetComponent<Image>();
+    }
 
     private void Start()
     {
-        foreach (GameObject button in Button)
-        {
-            Button btn = button.GetComponent<Button>();
-            btn.onClick.AddListener(OutMove);
-        }
+        //foreach (GameObject button in Button)
+        //{
+        //    Button btn = button.GetComponent<Button>();
+        //    btn.onClick.AddListener(OutMove);
+        //}
     }
 
     private void OutMove()
