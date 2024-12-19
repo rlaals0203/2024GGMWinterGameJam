@@ -786,6 +786,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54bc4d8843d8f8245ab56ed142b4ce0c, type: 3}
+--- !u!4 &274650497 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3979282577530489767, guid: 54bc4d8843d8f8245ab56ed142b4ce0c, type: 3}
+  m_PrefabInstance: {fileID: 274650496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &274650498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 505172868243540344, guid: 54bc4d8843d8f8245ab56ed142b4ce0c, type: 3}
+  m_PrefabInstance: {fileID: 274650496}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6394506d2a6919242a639f8a2747e8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &311013449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141383,6 +141399,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5962307086891966486, guid: aa5ed4b5e72055b4e96208d22e9d2869, type: 3}
+      propertyPath: gunTrm
+      value: 
+      objectReference: {fileID: 274650497}
+    - target: {fileID: 5962307086891966486, guid: aa5ed4b5e72055b4e96208d22e9d2869, type: 3}
+      propertyPath: releaseShot
+      value: 
+      objectReference: {fileID: 274650498}
     - target: {fileID: 9115711276925106220, guid: aa5ed4b5e72055b4e96208d22e9d2869, type: 3}
       propertyPath: m_Name
       value: Player
