@@ -25,10 +25,12 @@ public class StageManager : MonoSingleton<StageManager>
         {
             currentStage = 8;
         }
-        PlayerPrefs.SetInt(saveName, maxStage);
 
         if (currentStage > maxStage)
+        {
             maxStage = currentStage;
+            PlayerPrefs.SetInt(saveName, maxStage);
+        }
 
         SceneManager.LoadScene($"Stage{currentStage}");
 
