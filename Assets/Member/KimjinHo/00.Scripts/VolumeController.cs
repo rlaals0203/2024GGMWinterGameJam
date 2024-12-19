@@ -1,19 +1,25 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class VolumeController : MonoBehaviour
 {
-    public Slider volumeSlider; // 슬라이더 UI 요소
 
     private string AllName = "All";
+    private float _volume;
+
+    [SerializeField] private GameObject[] _cells;
 
     private void Start()
     {
-        float volume = PlayerPrefs.GetFloat(AllName);
-        volumeSlider.value = volume;
-        SetVolume(volume);
-        // 슬라이더 값 변경시 호출될 이벤트 등록
-        volumeSlider.onValueChanged.AddListener(SetVolume);
+        _volume = PlayerPrefs.GetFloat(AllName, 1f);
+
+        int activeCells = Mathf.Clamp((int)(_volume * 10), 0, _cells.Length);
+        for (int i = 0; i < _cells.Length; i++)
+            _cells[i].SetActive(i < activeCells);
+
+        PlayerPrefs.SetFloat(AllName, _volume);
+
+        SetVolume(_volume);
     }
 
     // 전체 음량 조절 함수
@@ -21,5 +27,44 @@ public class VolumeController : MonoBehaviour
     {
         AudioListener.volume = volume; // AudioListener의 volume 값을 변경
         PlayerPrefs.SetFloat(AllName, volume);
+    }
+    public void UpSound()
+    {
+        
+
+        if (_volume >= 1f)
+            return;
+
+        _volume = Mathf.Clamp(_volume + 0.1f, 0f, 1f);
+
+        AudioListener.volume = _volume;
+
+        int activeCells = Mathf.Clamp((int)(_volume * 10), 0, _cells.Length);
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            _cells[i].SetActive(i < activeCells);
+        }
+
+        PlayerPrefs.SetFloat(AllName, _volume);
+    }
+
+    public void DownSound()
+    {
+      
+
+        if (_volume <= 0f)
+            return;
+
+        _volume = Mathf.Clamp(_volume - 0.1f, 0f, 1f);
+
+        AudioListener.volume = _volume;
+
+        int activeCells = Mathf.Clamp((int)(_volume * 10), 0, _cells.Length);
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            _cells[i].SetActive(i < activeCells);
+        }
+
+        PlayerPrefs.SetFloat(AllName, _volume);
     }
 }
