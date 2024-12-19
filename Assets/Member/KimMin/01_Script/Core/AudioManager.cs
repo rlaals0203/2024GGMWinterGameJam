@@ -24,7 +24,7 @@ public class AudioManager : MonoSingleton<AudioManager>
             if (pair.Value == name)
             {
                 pair.Key.SoundClip();
-                pair.Key.SoundPlay();
+                pair.Key.SoundPlay(pair.Key.volume);
                 return;
             }
         }

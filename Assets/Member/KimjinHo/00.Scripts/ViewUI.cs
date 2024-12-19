@@ -9,6 +9,7 @@ public class ViewUI : MonoBehaviour
     private bool _istrue = false;
     private void OnEnable()
     {
+        OnUnlock();
         StageChose.OnUnLock += OnUnlock;
     }
     public void OnUnlock()
@@ -36,6 +37,9 @@ public class ViewUI : MonoBehaviour
     }
     public void Show()
     {
+        
+        OnUnlock();
+
         if (_gameObject == null || _gameObject.transform == null)
             return;
 
