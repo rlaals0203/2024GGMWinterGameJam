@@ -72,7 +72,7 @@ public class Bullet : Player, IBlowable
 
     public void HandleKillTarget()
     {
-        ResetBullet();
+
     }
 
     private void HandleSceneLoaded()
