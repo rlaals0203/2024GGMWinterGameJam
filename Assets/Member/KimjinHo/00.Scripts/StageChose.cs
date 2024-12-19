@@ -14,6 +14,12 @@ public class StageChose : Hover
 
     public void OnStageClick(int stageNumber) => FadeOut($"Stage{stageNumber + 1}");
 
+    public void ChangeStartScene()
+    {
+        _panel.gameObject.SetActive(true);
+        _panel.DOFade(1, 1f).OnComplete(() => ChangeGameScene("Title"));
+    }
+
     public void FadeOut(string str)
     {
         _panel.gameObject.SetActive(true);

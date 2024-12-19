@@ -46,7 +46,6 @@ public class MainUIManager : MonoBehaviour
 
     public void ChangeGameScene()
     {
-        _panel.DOFade(1, 1f);
         DOTween.KillAll();
         SceneManager.LoadScene(_gmaeScnenName1);
     }
