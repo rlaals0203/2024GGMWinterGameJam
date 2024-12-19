@@ -76,7 +76,10 @@ public class SettingButton : Hover
         Destroy(_gameObject);
         DOTween.KillAll();
         if (_sceneName != null)
+        {
             SceneManager.LoadScene(_sceneName);
+            Cursor.visible = true;
+        }
     }
 
     public override void OnMouse()
