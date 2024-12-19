@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ObstacleParent : MonoBehaviour
 {
-    protected Player _player;
+    protected Bullet _bullet;
 
     private void Awake()
     {
-        _player = GameObject.Find("Player").GetComponent<Player>();
+        _bullet = GameObject.Find("Player").GetComponent<Bullet>();
     }
 }
