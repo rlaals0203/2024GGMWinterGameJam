@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MainUI : IHover
+public class MainUI : Hover
 {
     [Header("UI")]
     [SerializeField] private GameObject _title;

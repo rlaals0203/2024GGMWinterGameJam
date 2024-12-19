@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StageChose : IHover
+public class StageChose : Hover
 {
     [Header("MovePosition")]
     [SerializeField] private Transform[] _inStatePos;

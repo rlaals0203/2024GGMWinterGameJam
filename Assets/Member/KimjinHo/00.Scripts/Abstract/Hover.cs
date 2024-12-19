@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class IHover : MonoBehaviour
+public abstract class Hover : MonoBehaviour
 {
     [Header("HoverSeetting")]
     [SerializeField] protected List<GameObject> Button;
