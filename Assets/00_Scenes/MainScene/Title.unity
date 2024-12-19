@@ -2443,8 +2443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c719dbb007a48c42848b6fb9aec731b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStage: 5
-  maxStage: 0
+  currentStage: 8
+  maxStage: 8
   isLoading: 0
   saveName: maxStage
 --- !u!4 &875007278
