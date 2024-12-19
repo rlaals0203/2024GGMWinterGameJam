@@ -43,11 +43,6 @@ public class Player : MonoBehaviour
 
     private void HandleStageLoad()
     {
-        while (GetSceneName() == $"Stage{StageManager.Instance.currentStage}")
-        {
-            break;
-        }
-
         Debug.Log(StageManager.Instance.currentStage);
 
         if($"Stage{StageManager.Instance.currentStage}" != GetSceneName())
