@@ -14,6 +14,7 @@ public class BreakWall : MonoBehaviour
             if (bullet.bulletSpeed < 25)
             {
                 bullet.GetCompo<PlayerDead>().KillPlayer();
+                return;
             }
 
             PlayEffect(bullet.transform);
