@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class StageManager : MonoSingleton<StageManager>
 {
-    public int currentStage;
-    public int maxStage;
+    public int currentStage = 1;
+    public int maxStage = 1;
     public bool isLoading = false;
     public event Action OnStageLoaded;
     public string saveName = "maxStage";
