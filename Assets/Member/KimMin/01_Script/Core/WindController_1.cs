@@ -8,8 +8,8 @@ public class WindController : MonoSingleton<WindController>
 
     public bool isHorizontal = true;
 
-	public float gravityScale = 1f;
-	public float changeTime = 0.1f;
+	private float gravityScale = 2f;
+	private float changeTime = 0.05f;
 
     public Vector2 currentGravity = Vector2.zero;
     private Vector2 prevGravity = Vector2.zero;
