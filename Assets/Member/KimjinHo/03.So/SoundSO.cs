@@ -1,3 +1,4 @@
+using System.Reflection;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "SO/Sound/SoundSO")]
@@ -10,6 +11,9 @@ public class SoundSO : ScriptableObject
 
     public void SoundClip()
     {
+        if (audioSource ==null)
+            audioSource = GameObject.Find("SPX").GetComponent<AudioSource>();
+
         audioSource.clip = clip;
     }
 
