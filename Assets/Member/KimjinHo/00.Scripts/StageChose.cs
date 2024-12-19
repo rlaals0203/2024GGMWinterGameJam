@@ -2,14 +2,11 @@ using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StageChose : MonoBehaviour
 {
-    [Header("ScaneName")]
-    [SerializeField] private string[] _scaneName;
-
     [Header("MovePosition")]
     [SerializeField] private Transform[] _inStatePos;
     [SerializeField] private Transform[] _outStatePos;
@@ -17,23 +14,17 @@ public class StageChose : MonoBehaviour
     [Header("MoveObject")]
     [SerializeField] private List<GameObject> _stageButton;
 
-    [SerializeField] private Image _panel;
+    private Image _panel;
 
     public GraphicRaycaster graphicRaycaster;
     public EventSystem eventSystem;
 
     private GameObject currentHoveredButton = null;
 
-
-    public void OnStageClick(int stageNumber)
-    {
-        if (stageNumber >= 0 && stageNumber < _scaneName.Length)
-            FadeOut(_scaneName[stageNumber]);
-    }
+    public void OnStageClick(int stageNumber) => FadeOut($"Stage{stageNumber + 1}");
 
     public void FadeOut(string str)
     {
-        Debug.Log(str);
         _panel.gameObject.SetActive(true);
         _panel.DOFade(1, 1f).OnComplete(() => ChangeGameScene(str));
     }
@@ -44,10 +35,11 @@ public class StageChose : MonoBehaviour
         SceneManager.LoadScene(str);
     }
 
-    private void OnEnable()
-    {
-        InMove();
-    }
+    private void OnEnable() => InMove();
+
+
+    private void Awake() => _panel = transform.Find("Fade").GetComponent<Image>();
+
     private void Start()
     {
         foreach (GameObject button in _stageButton)
@@ -61,29 +53,22 @@ public class StageChose : MonoBehaviour
     {
         var seq = DOTween.Sequence();
         for (int i = 0; i < _stageButton.Count; i++)
-        {
             if (i < _outStatePos.Length)
-            {
-                seq.Append(_stageButton[i].transform.DOMove(_outStatePos[i].position, 0.2f));
-            }
-        }
+                seq.Append(_stageButton[i].transform.DOMove(_outStatePos[i].position, 0.2f)).SetEase(Ease.InQuad);
+        DOTween.Kill(seq);
     }
 
     private void InMove()
     {
         var seq = DOTween.Sequence();
         for (int i = 0; i < _stageButton.Count; i++)
-        {
             if (i < _inStatePos.Length)
-            {
-                seq.Append(_stageButton[i].transform.DOMove(_inStatePos[i].position, 0.2f));
-            }
-        }
+                seq.Append(_stageButton[i].transform.DOMove(_inStatePos[i].position, 0.2f)).SetEase(Ease.InQuad);
+        DOTween.Kill(seq);
     }
-    private void Update()
-    {
-        OnMouse();
-    }
+
+    private void Update() => OnMouse();
+
     private void OnMouse()
     {
         GameObject hoveredButton = GetHoveredButton();
@@ -119,9 +104,7 @@ public class StageChose : MonoBehaviour
     private GameObject GetHoveredButton()
     {
         if (graphicRaycaster == null || eventSystem == null)
-        {
             return null;
-        }
 
         PointerEventData pointerData = new PointerEventData(eventSystem)
         {
@@ -132,13 +115,9 @@ public class StageChose : MonoBehaviour
         graphicRaycaster.Raycast(pointerData, results);
 
         foreach (RaycastResult result in results)
-        {
             foreach (GameObject button in _stageButton)
-            {
                 if (result.gameObject == button)
                     return button;
-            }
-        }
 
         return null;
     }
