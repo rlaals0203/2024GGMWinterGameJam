@@ -35,8 +35,8 @@ public class SettingButton : MonoBehaviour
         _gameObject.SetActive(true);
 
         var seq = DOTween.Sequence();
-        seq.Append(_gameObject.transform.DOScale(1.1f, 0.5f));
-        seq.Append(_gameObject.transform.DOScale(1f, 0.1f));
+        seq.Append(_gameObject.transform.DOScale(1.9f, 0.5f));
+        seq.Append(_gameObject.transform.DOScale(1.8f, 0.1f));
         seq.Play();
         _istrue = true;
     }
@@ -50,7 +50,7 @@ public class SettingButton : MonoBehaviour
         var seq = DOTween.Sequence();
 
         _gameObject.transform.localScale = Vector3.one * 0.2f;
-        seq.Append(_gameObject.transform.DOScale(1.1f, 0.1f));
+        seq.Append(_gameObject.transform.DOScale(1.8f, 0.1f));
         seq.Append(_gameObject.transform.DOScale(0f, 0.5f));
         seq.Play().OnComplete(() =>
         {
