@@ -44,6 +44,8 @@ public class PanelUI : MonoBehaviour
         seq.Append(_tip.transform.DOScale(1.8f, 0.1f));
         seq.Play();
         _istrue = true;
+
+        Cursor.visible = true;
     }
 
 
@@ -62,6 +64,8 @@ public class PanelUI : MonoBehaviour
             _tip?.SetActive(false);
         });
         _istrue = false;
+
+        Cursor.visible = false;
     }
 
 
