@@ -17,8 +17,9 @@ public class SoundSO : ScriptableObject
         audioSource.clip = clip;
     }
 
-    public void SoundPlay()
+    public void SoundPlay(float volume)
     {
+        audioSource.volume = volume;
         audioSource.Play();
     }
 }
