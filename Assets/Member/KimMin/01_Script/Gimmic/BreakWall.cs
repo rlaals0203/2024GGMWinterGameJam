@@ -31,8 +31,6 @@ public class BreakWall : MonoBehaviour
     {
         EffectPlayer effect = PoolManager.Instance.Pop("WallBreakParticle") as EffectPlayer;
         effect.SetPositionAndPlay(playerTrm.position);
-
-        Debug.Log("sfd");
     }
 
     private IEnumerator SlowMotionRoutine()

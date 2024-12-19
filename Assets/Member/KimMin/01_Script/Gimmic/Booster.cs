@@ -14,7 +14,7 @@ public class Booster : MonoBehaviour
                 blowable.RigidCompo.velocity *= 1.7f;
             }
             else
-                blowable.RigidCompo.velocity *= 1.3f;
+                blowable.RigidCompo.velocity *= 1.4f;
 
             BackgroundEffector.Instance.ChangeBackgroundColor(new Color(0, 100, 50) / 75, 0.4f);
             gameObject.SetActive(false);

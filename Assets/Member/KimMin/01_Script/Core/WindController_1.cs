@@ -31,14 +31,12 @@ public class WindController : MonoSingleton<WindController>
 
     private void ChangeWind()
     {
-
-
         if (isHorizontal)
         {
             if (Input.GetKeyDown(KeyCode.W)) UpWind();
             else if (Input.GetKeyDown(KeyCode.S)) DownWind();
         }
-        else
+        else if(!isHorizontal)
         {
             if (Input.GetKeyDown(KeyCode.A)) LeftWind();
             else if (Input.GetKeyDown(KeyCode.D)) RightWind();

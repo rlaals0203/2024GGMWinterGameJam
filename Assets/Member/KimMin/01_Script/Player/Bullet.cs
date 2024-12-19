@@ -90,8 +90,9 @@ public class Bullet : Player, IBlowable
 
         VisualCompo.renderer.enabled = false;
         CanShot = true;
-        Time.timeScale = 1f;
 
+        Time.timeScale = 1f;
+        WindController.Instance.isHorizontal = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
