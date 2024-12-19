@@ -13,20 +13,19 @@ public class ViewUI : MonoBehaviour
     }
     public void OnUnlock()
     {
-        if(StageManager.Instance.currentStage >= 6)
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                Locks[i].gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            for (int i = 0; i < StageManager.Instance.currentStage; i++)
-            {
-                Locks[i].gameObject.SetActive(false);
-            }
-        }
+        int i = StageManager.Instance.currentStage;
+        if (1 <= i)
+            Locks[0].gameObject.SetActive(false);
+        if (2 <= i)
+            Locks[1].gameObject.SetActive(false);
+        if (4 <= i)
+            Locks[2].gameObject.SetActive(false);
+        if (5 <= i)
+            Locks[3].gameObject.SetActive(false);
+        if (6 <= i)
+            Locks[4].gameObject.SetActive(false);
+        if (7 <= i)
+            Locks[5].gameObject.SetActive(false);
     }
     public void Panel()
     {
