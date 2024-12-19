@@ -6,6 +6,7 @@ public class SoundSO : ScriptableObject
     public AudioSource audioSource;
     public AudioClip clip;
     public float volume = 1f;
+    public string Name;
 
     public void SoundClip()
     {
