@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.LightAnchor;
+using DG.Tweening;
 
 public class WindParticle : MonoBehaviour, IPlayerComponent
 {
@@ -31,6 +31,6 @@ public class WindParticle : MonoBehaviour, IPlayerComponent
 
     private void SetRotation()
     {
-        Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, (_bullet.VisualCompo.transform.rotation.z * 60) + 180), 0.1f);
+        transform.rotation = Quaternion.Euler(0, 0, (_bullet.VisualCompo.transform.rotation.z * 90) + 180);
     }
 }

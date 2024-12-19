@@ -6,10 +6,13 @@ using UnityEngine;
 public class MouseBarrier : MonoBehaviour
 {
     [SerializeField] private float _hitPower;
+
+    private Transform _playerTrm;
     private Vector2 _mosuePos;
 
     private void Awake()
     {
+        _playerTrm = GameObject.Find("Player").transform;
         Cursor.visible = false;
     }
 
