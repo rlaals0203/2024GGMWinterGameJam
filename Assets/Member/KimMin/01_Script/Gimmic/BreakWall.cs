@@ -11,14 +11,16 @@ public class BreakWall : MonoBehaviour
     {
         if (collision.TryGetComponent(out Bullet bullet))
         {
-            if (bullet.bulletSpeed < 25)
+            if (bullet.RigidCompo.velocity.magnitude < 25)
             {
                 bullet.GetCompo<PlayerDead>().KillPlayer();
+                return;
             }
 
             PlayEffect(bullet.transform);
             StartCoroutine(SlowMotionRoutine());
             bullet.CameraPos.transform.DOShakePosition(0.25f, 25, 50, 5f);
+            bullet.RigidCompo.velocity *= 0.75f;
         }
     }
 
@@ -26,6 +28,8 @@ public class BreakWall : MonoBehaviour
     {
         EffectPlayer effect = PoolManager.Instance.Pop("WallBreakParticle") as EffectPlayer;
         effect.SetPositionAndPlay(playerTrm.position);
+
+        Debug.Log("sfd");
     }
 
     private IEnumerator SlowMotionRoutine()
