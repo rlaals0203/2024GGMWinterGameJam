@@ -21,6 +21,8 @@ public class BreakWall : MonoBehaviour
             StartCoroutine(SlowMotionRoutine());
             bullet.CameraPos.transform.DOShakePosition(0.25f, 25, 50, 5f);
             bullet.RigidCompo.velocity *= 0.75f;
+
+            AudioManager.Instance.PlaySound("BreakWall");
             BackgroundEffector.Instance.ChangeBackgroundColor(new Color(75 / 255f, 0, 0), 0.5f);
         }
     }
@@ -29,8 +31,6 @@ public class BreakWall : MonoBehaviour
     {
         EffectPlayer effect = PoolManager.Instance.Pop("WallBreakParticle") as EffectPlayer;
         effect.SetPositionAndPlay(playerTrm.position);
-
-        Debug.Log("sfd");
     }
 
     private IEnumerator SlowMotionRoutine()
