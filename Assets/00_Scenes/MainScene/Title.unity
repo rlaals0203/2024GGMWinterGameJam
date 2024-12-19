@@ -2155,6 +2155,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16ccacfef1664144b779c4e2de0bd5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Button:
+  - {fileID: 1836233312}
+  - {fileID: 898256424}
+  - {fileID: 1550380096}
+  GraphicRaycaster: {fileID: 1735710900}
+  EventSystem: {fileID: 277305334}
+  CurrentHoveredButton: {fileID: 0}
   _title: {fileID: 655316520}
   _startButton: {fileID: 1836233312}
   _settingButton: {fileID: 898256424}
@@ -2175,13 +2182,6 @@ MonoBehaviour:
   _titlePos: {fileID: 1730496929}
   _Pos1: {fileID: 1090992782}
   _pos2: {fileID: 588567658}
-  _exitButtonPos: {fileID: 731881621}
-  graphicRaycaster: {fileID: 1735710900}
-  eventSystem: {fileID: 277305334}
-  buttons:
-  - {fileID: 1836233312}
-  - {fileID: 898256424}
-  - {fileID: 1550380096}
 --- !u!114 &1735710905
 MonoBehaviour:
   m_ObjectHideFlags: 0

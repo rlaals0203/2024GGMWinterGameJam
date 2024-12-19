@@ -94,7 +94,6 @@ public class SettingButton : MonoBehaviour
         return null;
     }
 
-
     private GameObject GetHoveredButton()
     {
         PointerEventData pointerData = new PointerEventData(eventSystem)
