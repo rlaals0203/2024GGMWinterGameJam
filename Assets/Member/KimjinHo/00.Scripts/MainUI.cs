@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MainUI : MonoBehaviour
+public class MainUI : Hover
 {
     [Header("UI")]
     [SerializeField] private GameObject _title;
@@ -37,17 +37,8 @@ public class MainUI : MonoBehaviour
     [SerializeField] private Transform _titlePos;
     [SerializeField] private Transform _Pos1;
     [SerializeField] private Transform _pos2;
-    [SerializeField] private Transform _exitButtonPos;
 
-    public GraphicRaycaster graphicRaycaster;
-    public EventSystem eventSystem;
-
-    [SerializeField] private List<GameObject> buttons;
-    private GameObject currentHoveredButton = null;
-    private void Awake()
-    {
-        DOTween.SetTweensCapacity(500, 50);
-    }
+    private void Awake() => DOTween.SetTweensCapacity(500, 50);
 
     private void OnEnable()
     {
@@ -56,10 +47,7 @@ public class MainUI : MonoBehaviour
         StartMove();
     }
 
-    private void OnDisable()
-    {
-        MainUIManager.OnAnime -= EndMove;
-    }
+    private void OnDisable() => MainUIManager.OnAnime -= EndMove;
     private void StartMove()
     {
         var seq = DOTween.Sequence();
@@ -104,7 +92,7 @@ public class MainUI : MonoBehaviour
             .Append(_startButton.transform.DOMove(_Pos1.position, 0.4f)).SetEase(Ease.OutBounce)
             .Append(_startButton.transform.DOMove(_pos2.position, 0.4f)).SetEase(Ease.OutBounce);
 
-        seqbtn2 
+        seqbtn2
             .Insert(0.5f, _settingButton.transform.DOMove(_exitButtonPos2.position, 0.6f)).SetEase(Ease.OutBounce)
             .Append(_settingButton.transform.DOMove(_Pos1.position, 0.4f)).SetEase(Ease.OutBounce)
             .Append(_settingButton.transform.DOMove(_pos2.position, 0.4f)).SetEase(Ease.OutBounce);
@@ -116,56 +104,6 @@ public class MainUI : MonoBehaviour
 
     private void Update()
     {
-        OnMouse(); 
-    }
-
-    private void OnMouse()
-    {
-        GameObject hoveredButton = GetHoveredButton();
-
-        if (hoveredButton != currentHoveredButton)
-        {
-            currentHoveredButton = hoveredButton;
-
-            foreach (GameObject button in buttons)
-            {
-                if (button == null) continue;
-
-                if (button == currentHoveredButton)
-                    button.transform.DOScale(1.5f, 0.3f);
-                else
-                    button.transform.DOScale(0.8f, 0.3f);
-            }
-        }
-
-        if (currentHoveredButton == null)
-        {
-            foreach (GameObject button in buttons)
-            {
-                if (button == null) continue;
-
-                button.transform.DOScale(1f, 0.3f);
-            }
-        }
-    }
-
-
-
-    private GameObject GetHoveredButton()
-    {
-        PointerEventData pointerData = new PointerEventData(eventSystem)
-        {
-            position = Input.mousePosition
-        };
-
-        List<RaycastResult> results = new List<RaycastResult>();
-        graphicRaycaster.Raycast(pointerData, results);
-
-        foreach (RaycastResult result in results)
-            foreach (GameObject button in buttons)
-                if (result.gameObject == button)
-                    return button;
-
-        return null;
+        OnMouse();
     }
 }

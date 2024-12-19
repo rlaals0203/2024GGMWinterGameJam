@@ -15,6 +15,12 @@ public class SettingButton : MonoBehaviour
     [SerializeField] private List<GameObject> _settingButton;
     private GameObject currentHoveredSettingButton = null;
 
+
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     private void Update()
     {
         OnMouse();
@@ -93,7 +99,6 @@ public class SettingButton : MonoBehaviour
                     return button;
         return null;
     }
-
 
     private GameObject GetHoveredButton()
     {
