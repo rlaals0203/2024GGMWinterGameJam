@@ -20,4 +20,19 @@ public class Obstacle : ObstacleParent, IBlowable
             RigidCompo.simulated = true;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Barrier"))
+        {
+            Explosion();
+        }
+    }
+
+    private void Explosion()
+    {
+        EffectPlayer effect =  PoolManager.Instance.Pop("BrokeParticle") as EffectPlayer;
+        effect.SetPositionAndPlay(transform.position);
+        gameObject.SetActive(false);
+    }
 }

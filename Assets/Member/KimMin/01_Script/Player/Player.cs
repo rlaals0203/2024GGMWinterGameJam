@@ -12,11 +12,12 @@ public class Player : MonoBehaviour
     public Transform CameraPos { get; protected set; }
     public PlayerVisual VisualCompo { get; protected set; }
 
+    public ReleaseShot releaseShot;
+    public Transform gunTrm;
+
     [HideInInspector] public Vector3 moveDir;
-    [HideInInspector] public ReleaseShot releaseShot;
     [HideInInspector] public SpriteRenderer cutScene;
     [HideInInspector] public Transform startPos;
-    [HideInInspector] public Transform gunTrm;
 
     public float bulletSpeed = 10f;
     public float shotPower = 100f;

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.LightAnchor;
 
 public class WindParticle : MonoBehaviour, IPlayerComponent
 {
     private Bullet _bullet;
     private ParticleSystem _particleSystem;
+
+    private float _distance = 25f;
 
     public void Initialize(Player player)
     {
@@ -14,9 +17,20 @@ public class WindParticle : MonoBehaviour, IPlayerComponent
         _particleSystem = GetComponent<ParticleSystem>();
     }
 
-    private void SetParticle()
+    private void Update()
     {
-
+        SetRotation();
+        SetParticle();
     }
 
+    private void SetParticle()
+    {
+        var emission = _particleSystem.emission;
+        emission.rateOverTime = _bullet.bulletSpeed * 5f;
+    }
+
+    private void SetRotation()
+    {
+        Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, (_bullet.VisualCompo.transform.rotation.z * 60) + 180), 0.1f);
+    }
 }
