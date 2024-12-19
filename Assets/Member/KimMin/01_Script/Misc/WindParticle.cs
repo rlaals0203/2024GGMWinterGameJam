@@ -26,11 +26,11 @@ public class WindParticle : MonoBehaviour, IPlayerComponent
     private void SetParticle()
     {
         var emission = _particleSystem.emission;
-        emission.rateOverTime = _bullet.bulletSpeed * 5f;
+        emission.rateOverTime = _bullet.RigidCompo.velocity.magnitude / 1.5f;
     }
 
     private void SetRotation()
     {
-        transform.rotation = Quaternion.Euler(0, 0, (_bullet.VisualCompo.transform.rotation.z * 90) + 180);
+        transform.rotation = Quaternion.Euler(0, 0, (_bullet.VisualCompo.transform.rotation.z * 120));
     }
 }

@@ -35,13 +35,13 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
 
         ExplosionPlayer();
         StartCoroutine(CutSceneRoutine());
-
         OnDeadEvent?.Invoke();
     }
 
     private void ExplosionPlayer()
     {
-        Time.timeScale = 0.5f;
+        DOTween.To(() => 0.2f, x => Time.timeScale = x, 1f, 0.3f)
+            .SetEase(Ease.InBack);
 
         _bullet.VisualCompo.renderer.enabled = false;
         _bullet.RigidCompo.velocity = Vector2.zero;
@@ -55,7 +55,7 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
 
     private IEnumerator CutSceneRoutine()
     {
-        yield return new WaitForSeconds(1.65f);
+        yield return new WaitForSeconds(1f);
 
         _bullet.cutScene.DOFade(0f, 0.5f)
             .OnComplete(() =>

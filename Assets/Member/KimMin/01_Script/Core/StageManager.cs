@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class StageManager : MonoSingleton<StageManager>
 {
     public int currentStage;
+    public bool isLoading = false;
     public event Action OnStageLoaded;
 
     private void Awake()
@@ -16,6 +17,8 @@ public class StageManager : MonoSingleton<StageManager>
 
     public void LoadStage()
     {
+        currentStage++;
+        isLoading = true;
         SceneManager.LoadScene($"Stage{currentStage}");
 
         OnStageLoaded?.Invoke();
