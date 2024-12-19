@@ -40,6 +40,11 @@ public class GameSucessUI : MonoBehaviour
         StageManager.Instance.LoadStage();
     }
 
+    public void Exit()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
     public void Retry()
     {
         Cursor.visible = false;
