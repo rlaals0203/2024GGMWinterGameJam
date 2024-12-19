@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class BulletSpeed : MonoBehaviour
 {
-    [SerializeField] private Bullet _bullet;
+    private Bullet _bullet;
 
     private TextMeshProUGUI _speedTxt;
 
     private void Awake()
     {
+        _bullet = GameObject.Find("Player").GetComponent<Bullet>();
         _speedTxt = GetComponentInChildren<TextMeshProUGUI>();
     }
 
