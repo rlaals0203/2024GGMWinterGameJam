@@ -21,23 +21,31 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
         if (collision.transform.TryGetComponent(out ICollisionable collisionable) ||
             collision.transform.CompareTag("Wall"))
         {
-            _bullet.CameraPos.transform.DOShakePosition(1f, 4f);
-
-            _bullet.cutScene.gameObject.SetActive(true);
-            _bullet.cutScene.DOFade(1f, 0f);
-
-            ExplosionPlayer();
-            StartCoroutine(CutSceneRoutine());
-
-            Time.timeScale = 0.5f;
-            OnDeadEvent?.Invoke();
+            KillPlayer();
         }
+
+    }
+
+    public void KillPlayer()
+    {
+        _bullet.CameraPos.transform.DOShakePosition(1f, 4f);
+
+        _bullet.cutScene.gameObject.SetActive(true);
+        _bullet.cutScene.DOFade(1f, 0f);
+
+        ExplosionPlayer();
+        StartCoroutine(CutSceneRoutine());
+
+        OnDeadEvent?.Invoke();
     }
 
     private void ExplosionPlayer()
     {
+        Time.timeScale = 0.5f;
+
         _bullet.VisualCompo.renderer.enabled = false;
         _bullet.RigidCompo.velocity = Vector2.zero;
+        _bullet.RigidCompo.angularVelocity = 0;
         _bullet.RigidCompo.simulated = false;
 
         AudioManager.Instance.PlaySound("BulletBroke");

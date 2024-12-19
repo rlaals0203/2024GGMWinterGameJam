@@ -11,8 +11,11 @@ public class BreakWall : MonoBehaviour
     {
         if (collision.TryGetComponent(out Bullet bullet))
         {
-/*            _directionTrm = bullet.transform.Find("Direction");
-            moveDir = (_directionTrm.position - bullet.transform.position).normalized;*/
+            if (bullet.bulletSpeed < 25)
+            {
+                bullet.GetCompo<PlayerDead>().KillPlayer();
+            }
+
             PlayEffect(bullet.transform);
             StartCoroutine(SlowMotionRoutine());
             bullet.CameraPos.transform.DOShakePosition(0.25f, 25, 50, 5f);

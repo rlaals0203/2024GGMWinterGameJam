@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 using System.Linq.Expressions;
+using UnityEngine.SceneManagement;
 
 public class Bullet : Player, IBlowable
 {
@@ -26,8 +27,6 @@ public class Bullet : Player, IBlowable
     private void Start()
     {
         startPos = GameObject.Find("Gun").transform;
-
-        ResetBullet();
     }
 
     private void FixedUpdate()
@@ -92,6 +91,8 @@ public class Bullet : Player, IBlowable
         VisualCompo.renderer.enabled = false;
         CanShot = true;
         Time.timeScale = 1f;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public Rigidbody2D AssignRigidbody()
