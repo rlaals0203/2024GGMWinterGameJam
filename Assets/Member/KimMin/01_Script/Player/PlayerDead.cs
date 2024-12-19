@@ -61,6 +61,7 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
         _bullet.cutScene.DOFade(0f, 0.5f)
             .OnComplete(() =>
         {
+            _bullet.VisualCompo.renderer.enabled = false;
             OnCutSceneEnd?.Invoke();
         });
     }
