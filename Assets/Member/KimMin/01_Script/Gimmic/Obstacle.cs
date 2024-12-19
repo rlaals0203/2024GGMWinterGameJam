@@ -34,6 +34,7 @@ public class Obstacle : ObstacleParent, IBlowable
     {
         _bullet.CameraPos.transform.DOShakePosition(0.02f, 4, 10, 5f).SetEase(Ease.InOutElastic);
 
+        AudioManager.Instance.PlaySound("BreakObstacle");
         EffectPlayer effect =  PoolManager.Instance.Pop("BrokeParticle") as EffectPlayer;
         effect.SetPositionAndPlay(transform.position);
         gameObject.SetActive(false);
