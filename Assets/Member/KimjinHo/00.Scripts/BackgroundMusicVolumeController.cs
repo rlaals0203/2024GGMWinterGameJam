@@ -26,6 +26,8 @@ public class BackgroundMusicVolumeController : MonoBehaviour
         bgMusicSlider.onValueChanged.AddListener(SetBackgroundMusicVolume);
         SoundPlay(bgSound.sounds[0].clip);
         bgSound.sounds[0].SoundPlay();
+
+        DontDestroyOnLoad(this);
     }
 
     public void SetSound(AudioSource audioSource)

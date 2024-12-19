@@ -40,6 +40,7 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
         _bullet.RigidCompo.velocity = Vector2.zero;
         _bullet.RigidCompo.simulated = false;
 
+        AudioManager.Instance.PlaySound("BulletBroke");
         _effectPlayer = PoolManager.Instance.Pop("ExplosionParticle") as EffectPlayer;
         _effectPlayer.SetPositionAndPlay(transform.position);
     }
