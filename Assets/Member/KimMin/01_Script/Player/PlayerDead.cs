@@ -62,7 +62,6 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
             .OnComplete(() =>
         {
             OnCutSceneEnd?.Invoke();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         });
     }
 }

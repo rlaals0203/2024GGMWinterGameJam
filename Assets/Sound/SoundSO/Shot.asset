@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  clip: {fileID: 8300000, guid: 2f17cc61d7cb04840af2b234d29367cb, type: 3}
+  clip: {fileID: 8300000, guid: 7cfe9e8a6412d514c9d4c5954d482bf4, type: 3}
   volume: 1
   Name: Shot

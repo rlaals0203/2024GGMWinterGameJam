@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BreakWall
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  clip: {fileID: 8300000, guid: 71a6a99c790954f43ae9140610905622, type: 3}
+  clip: {fileID: 8300000, guid: c92afb6f35ee087488cef6eeed41a068, type: 3}
   volume: 1
   Name: BreakWall
