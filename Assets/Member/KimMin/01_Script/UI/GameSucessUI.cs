@@ -53,6 +53,7 @@ public class GameSucessUI : MonoBehaviour
             .OnComplete(() =>
             {
                 _gameSucessUI.SetActive(false);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             });
     }
 }
