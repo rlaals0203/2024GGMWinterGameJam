@@ -240,7 +240,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1662075209}
+      - m_Target: {fileID: 8390713622236935632}
         m_TargetAssemblyTypeName: StageChose, Assembly-CSharp
         m_MethodName: OnStageClick
         m_Mode: 3
@@ -542,7 +542,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1662075209}
+      - m_Target: {fileID: 8390713622236935632}
         m_TargetAssemblyTypeName: StageChose, Assembly-CSharp
         m_MethodName: OnStageClick
         m_Mode: 3
@@ -1558,7 +1558,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1662075209}
+      - m_Target: {fileID: 8390713622236935632}
         m_TargetAssemblyTypeName: StageChose, Assembly-CSharp
         m_MethodName: OnStageClick
         m_Mode: 3
@@ -1691,7 +1691,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1662075209}
+      - m_Target: {fileID: 8390713622236935632}
         m_TargetAssemblyTypeName: StageChose, Assembly-CSharp
         m_MethodName: OnStageClick
         m_Mode: 3
@@ -1859,7 +1859,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1662075209}
+      - m_Target: {fileID: 8390713622236935632}
         m_TargetAssemblyTypeName: StageChose, Assembly-CSharp
         m_MethodName: OnStageClick
         m_Mode: 3
@@ -2027,7 +2027,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1662075209}
+      - m_Target: {fileID: 8390713622236935632}
         m_TargetAssemblyTypeName: StageChose, Assembly-CSharp
         m_MethodName: OnStageClick
         m_Mode: 3
@@ -2584,7 +2584,6 @@ GameObject:
   - component: {fileID: 1662075206}
   - component: {fileID: 1662075208}
   - component: {fileID: 1662075207}
-  - component: {fileID: 1662075209}
   m_Layer: 5
   m_Name: ChoseButton
   m_TagString: Untagged
@@ -2658,26 +2657,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662075205}
   m_CullTransparentMesh: 1
---- !u!114 &1662075209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662075205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b8d3427bff8e6444b726d1240615b35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scaneName: []
-  _inStatePos: []
-  _outStatePos: []
-  _stageButton: []
-  _panel: {fileID: 0}
-  graphicRaycaster: {fileID: 0}
-  eventSystem: {fileID: 0}
-  buttons: []
 --- !u!1 &1697186370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2761,7 +2740,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1662075209}
+      - m_Target: {fileID: 8390713622236935632}
         m_TargetAssemblyTypeName: StageChose, Assembly-CSharp
         m_MethodName: OnStageClick
         m_Mode: 3
@@ -3197,7 +3176,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1662075209}
+      - m_Target: {fileID: 8390713622236935632}
         m_TargetAssemblyTypeName: StageChose, Assembly-CSharp
         m_MethodName: OnStageClick
         m_Mode: 3
@@ -3398,7 +3377,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1662075209}
+      - m_Target: {fileID: 8390713622236935632}
         m_TargetAssemblyTypeName: StageChose, Assembly-CSharp
         m_MethodName: OnStageClick
         m_Mode: 3
@@ -7001,8 +6980,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settingPanel: {fileID: 7975098353213649803}
-  _gmaeScnenName1: JH_test
-  _gmaeScnenName2: KImJinHo
+  _gmaeScnenName1: Chose
+  _gmaeScnenName2: Title
   _panel: {fileID: 3794283951616587556}
 --- !u!114 &8390713622236935632
 MonoBehaviour:
@@ -7016,16 +6995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b8d3427bff8e6444b726d1240615b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaneName:
-  - ewq
-  - eq
-  - weq
-  - ewq
-  - wq
-  - weq
-  - weq
-  - weqweq
-  - weq
   _inStatePos:
   - {fileID: 2116472540}
   - {fileID: 579616684}
@@ -7056,19 +7025,8 @@ MonoBehaviour:
   - {fileID: 1185014647}
   - {fileID: 1275803636}
   - {fileID: 277456090}
-  _panel: {fileID: 3794283951616587556}
   graphicRaycaster: {fileID: 6225245972870465427}
   eventSystem: {fileID: 2046057769}
-  buttons:
-  - {fileID: 143610611}
-  - {fileID: 2063124289}
-  - {fileID: 867535385}
-  - {fileID: 1697186370}
-  - {fileID: 2041102917}
-  - {fileID: 852991528}
-  - {fileID: 1185014647}
-  - {fileID: 1275803636}
-  - {fileID: 277456090}
 --- !u!222 &8604105509330474341
 CanvasRenderer:
   m_ObjectHideFlags: 0
