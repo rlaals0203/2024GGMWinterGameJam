@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 409286803}
   - component: {fileID: 409286802}
   m_Layer: 0
-  m_Name: background
+  m_Name: StageBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99488,11 +99488,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fbbe94e815cc734797aa0ea89f0e4a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDir: {x: 0, y: 0, z: 0}
   releaseShot: {fileID: 149451706}
+  gunTrm: {fileID: 0}
+  moveDir: {x: 0, y: 0, z: 0}
   cutScene: {fileID: 0}
   startPos: {fileID: 0}
-  gunTrm: {fileID: 0}
   bulletSpeed: 10
   shotPower: 300
 --- !u!114 &473074378763862199
