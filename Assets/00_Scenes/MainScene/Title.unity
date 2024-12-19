@@ -5172,6 +5172,7 @@ GameObject:
   - component: {fileID: 1735710900}
   - component: {fileID: 1735710904}
   - component: {fileID: 1735710905}
+  - component: {fileID: 1735710906}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -5317,6 +5318,18 @@ MonoBehaviour:
   _gmaeScnenName1: Chose
   _gmaeScnenName2: Title
   _panel: {fileID: 511775963}
+--- !u!114 &1735710906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735710899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654025eae830c6c4989fb10a6ff322c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1743831292
 PrefabInstance:
   m_ObjectHideFlags: 0

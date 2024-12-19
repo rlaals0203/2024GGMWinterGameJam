@@ -5417,7 +5417,7 @@ MonoBehaviour:
   cutScene: {fileID: 0}
   startPos: {fileID: 0}
   bulletSpeed: 10
-  shotPower: 300
+  shotPower: 500
 --- !u!114 &380708991817110618
 MonoBehaviour:
   m_ObjectHideFlags: 0
