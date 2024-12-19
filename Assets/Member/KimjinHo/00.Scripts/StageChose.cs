@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ public class StageChose : Hover
 
     private Image _panel;
 
+    public static Action OnUnLock;
+
     public void OnStageClick(int stageNumber)
     {
         if (StageManager.Instance.currentStage >= stageNumber + 1)
@@ -24,9 +27,20 @@ public class StageChose : Hover
 
     public void OnUnlock()
     {
-        for (int i = 0; i < StageManager.Instance.currentStage; i++)
+        OnUnLock?.Invoke();
+        if (StageManager.Instance.currentStage >= 8)
         {
-            Locks[i].gameObject.SetActive(false);
+            for (int i = 0; i < 8; i++)
+            {
+                Locks[i].gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < StageManager.Instance.currentStage; i++)
+            {
+                Locks[i].gameObject.SetActive(false);
+            }
         }
     }
 
