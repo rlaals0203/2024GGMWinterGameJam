@@ -16,7 +16,7 @@ public class SoundEffectsVolumeController : MonoBehaviour
 
         int activeCells = Mathf.Clamp((int)(_volume * 10), 0, _cells.Length);
         for (int i = 0; i < _cells.Length; i++)
-            _cells[i].SetActive(i < activeCells);
+            _cells[i].SetActive(i <= activeCells);
 
         foreach (var sfxSource in sfxSound.sounds)
         {
@@ -46,7 +46,7 @@ public class SoundEffectsVolumeController : MonoBehaviour
         int activeCells = Mathf.Clamp((int)(_volume * 10), 0, _cells.Length);
         for (int i = 0; i < _cells.Length; i++)
         {
-            _cells[i].SetActive(i < activeCells);
+            _cells[i].SetActive(i <= activeCells);
         }
 
         PlayerPrefs.SetFloat(sfxName, _volume);
@@ -55,7 +55,13 @@ public class SoundEffectsVolumeController : MonoBehaviour
     public void DownSound()
     {
         if (_volume <= 0f)
+        {
+            for (int i = 0; i < _cells.Length; i++)
+            {
+                _cells[i].SetActive(false);
+            }
             return;
+        }
 
         _volume = Mathf.Clamp(_volume - 0.1f, 0f, 1f);
 
@@ -70,7 +76,7 @@ public class SoundEffectsVolumeController : MonoBehaviour
         int activeCells = Mathf.Clamp((int)(_volume * 10), 0, _cells.Length);
         for (int i = 0; i < _cells.Length; i++)
         {
-            _cells[i].SetActive(i < activeCells);
+            _cells[i].SetActive(i <= activeCells);
         }
 
         PlayerPrefs.SetFloat(sfxName, _volume);
