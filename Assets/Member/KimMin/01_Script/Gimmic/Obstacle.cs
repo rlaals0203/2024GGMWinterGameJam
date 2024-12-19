@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Obstacle : ObstacleParent, IBlowable
 {
     public Rigidbody2D RigidCompo => AssignRigidbody();
 
-    private float _distance => (_player.transform.position - transform.position).magnitude;
+    private float _distance => (_bullet.transform.position - transform.position).magnitude;
 
     public Rigidbody2D AssignRigidbody()
     {
@@ -31,6 +32,8 @@ public class Obstacle : ObstacleParent, IBlowable
 
     private void Explosion()
     {
+        _bullet.CameraPos.transform.DOShakePosition(0.02f, 4, 10, 5f).SetEase(Ease.InOutElastic);
+
         EffectPlayer effect =  PoolManager.Instance.Pop("BrokeParticle") as EffectPlayer;
         effect.SetPositionAndPlay(transform.position);
         gameObject.SetActive(false);
