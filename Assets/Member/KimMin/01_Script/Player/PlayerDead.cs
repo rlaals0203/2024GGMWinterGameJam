@@ -45,6 +45,7 @@ public class PlayerDead : MonoBehaviour, IPlayerComponent
 
         _bullet.VisualCompo.renderer.enabled = false;
         _bullet.RigidCompo.velocity = Vector2.zero;
+        _bullet.RigidCompo.angularVelocity = 0;
         _bullet.RigidCompo.simulated = false;
 
         AudioManager.Instance.PlaySound("BulletBroke");
